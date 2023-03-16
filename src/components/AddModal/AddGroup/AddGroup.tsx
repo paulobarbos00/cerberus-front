@@ -8,7 +8,8 @@ export default function AddGroup() {
 
   const bodyRequest = {
     name: inputName,
-    description: inputDesc
+    description: inputDesc,
+    shortURL: ''
   };
 
   const { loading, addGroup } = useCreateLinkGroup(bodyRequest);
