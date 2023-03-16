@@ -40,7 +40,7 @@ export default function useCreateLinkGroup(params: ICreateLinkGroupProps) {
       const postBody = {
         name: params.name,
         description: params.description,
-        shortURL: 'shortURL'
+        shortURL: params.shortURL
       };
 
       setLoading(true);
