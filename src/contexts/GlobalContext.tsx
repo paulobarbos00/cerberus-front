@@ -30,12 +30,17 @@ export const GlobalContextProvider = ({
   const [modalActive, setModalActive] = React.useState<boolean>(false);
   const [userInfo, setUserInfo] = React.useState<SetUserInfoProps | null>(null);
 
+  let localId: string | null = '';
+  if (typeof window !== 'undefined') {
+    localId = localStorage.getItem('userLoggedInfo');
+  }
+
   React.useEffect(() => {
-    const storedUser = localStorage.getItem('userLoggedInfo');
+    const storedUser = localId;
     if (storedUser) {
       setUserInfo(JSON.parse(storedUser));
     }
-  }, []);
+  }, [localId]);
 
   return (
     <GlobalContext.Provider

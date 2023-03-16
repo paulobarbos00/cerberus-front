@@ -38,13 +38,16 @@ function useGetGoogleUser() {
               id
             };
 
-            document.cookie = `isUserLogged=true`;
-            data &&
-              localStorage.setItem(
-                'userLoggedInfo',
-                JSON.stringify(storageUser)
-              );
-            id && localStorage.setItem('userLoggedId', id);
+            if (typeof window !== 'undefined') {
+              document.cookie = `isUserLogged=true`;
+
+              data &&
+                localStorage.setItem(
+                  'userLoggedInfo',
+                  JSON.stringify(storageUser)
+                );
+              id && localStorage.setItem('userLoggedId', id);
+            }
 
             setUserInfo(storageUser);
           })
