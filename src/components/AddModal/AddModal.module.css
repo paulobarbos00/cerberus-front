@@ -1,0 +1,93 @@
+.modalContainer {
+  background-color: rgba(0,0,0, .3);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+  display: flex;
+  place-content: center;
+  align-items: flex-start;
+}
+
+.modal {
+  background-color: var(--primary1);
+  width: 25rem;
+  min-height: 10rem;
+  margin-top: 10rem;
+  border-radius: var(--borderRadius);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.modalTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modalTitle {
+  font-size: 1.8rem;
+  font-weight: normal;
+}
+
+.modalClose {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: .5rem;
+}
+
+.modalToggle {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.modalToggleButton {
+  background-color: var(--blue2);
+  border: none;
+  cursor: pointer;
+  padding: .5rem;
+  flex: 1;
+  font-size: 1.2rem;
+  border-radius: 10rem;
+  color: var(--secondary1);
+}
+
+.modalContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.modalLabel {
+  display: flex;
+  flex-direction: column;
+  gap: .2rem;
+}
+
+.modalInput {
+  height: 2.5rem;
+  padding: 1rem;
+  border-radius: var(--borderRadius);
+  border: none;
+  background-color: var(--primary3);
+  color: var(--secondary1);
+  font-size: 1rem;
+}
+
+.addButton {
+  height: 2.5rem;
+  margin-top: 1rem;
+  border-radius: var(--borderRadius);
+  border: none;
+  font-size: 1.2rem;
+  width: 50%;
+  align-self: flex-end;
+  cursor: pointer;
+}

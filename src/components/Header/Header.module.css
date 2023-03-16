@@ -1,0 +1,17 @@
+.header {
+  width: 100%;
+  height: 8rem;
+  display: flex;
+  margin: 0 auto;
+  max-width: var(--maxWidth);
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  color: var(--secondary1);
+  text-decoration: none;
+  font-size: 2rem;
+  padding: .5rem 0;
+}
+
