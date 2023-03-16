@@ -2,7 +2,7 @@ import { NextResponse } from 'next/dist/server/web/spec-extension/response';
 import { NextRequest } from 'next/server';
 
 export default function middleware(req: NextRequest) {
-  const SITE_URL = 'http://localhost:3000';
+  const SITE_URL = 'https://cerberus-front.vercel.app';
 
   const verifyUserLogged = req.cookies.get('isUserLogged');
   const url = req.url;
