@@ -1,0 +1,30 @@
+{
+  "typescript.tsdk": "node_modules\\typescript\\lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "editor.formatOnSave": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "files.exclude": {
+    // Repository paths
+    "node_modules": true,
+    "package.json": true,
+    "package-lock.json": true,
+
+    // Git
+    ".gitignore": true,
+    "README.md": true,
+
+    // TypeScript
+    "tsconfig.json": true,
+    "tsconfig.node.json": true,
+
+    // Next
+    ".next": true,
+    ".eslintrc.json": true,
+    ".prettierrc.json": true,
+    "next.config.js": true,
+    "next-env.d.ts": true,
+    ".env.local": false
+  },
+}
