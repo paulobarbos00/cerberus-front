@@ -11,10 +11,6 @@
 - Prettier
 
 ## Equipe:
-- LUCAS COSTA   lgmc1@aluno.ifal.edu.br
-- PAULO 
-
-
 - [Ytalo Gabriel](https://github.com/ytalogabriel)
 - [Hudson Gomes](https://github.com/gomeshud)
 - [João Victor](https://github.com/vikmiranda)
