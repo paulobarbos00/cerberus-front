@@ -1,24 +1,27 @@
 import React from 'react';
-
-import styles from './AddModal.module.css';
-import closeIcon from '@/../public/assets/icons/close.svg';
 import Image from 'next/image';
-import { useGlobalContext } from '@/contexts/GlobalContext';
+
+import closeIcon from '@/../public/assets/icons/close.svg';
 import AddGroup from './AddGroup/AddGroup';
+import styles from './AddModal.module.css';
+import { useModalContext } from '@/contexts/ModalContext';
 
 export default function AddModal() {
-  const { setModalActive } = useGlobalContext();
+  const { setModalActive, inputHasText } = useModalContext();
   const outSideModal = React.useRef(null);
 
-  const closeModal = ({ target }: any) => {
-    if (target === outSideModal.current) setModalActive(false);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const outsideClick = ({ target }: any) => {
+    if (target === outSideModal.current && !inputHasText) {
+      setModalActive(false);
+    }
   };
 
   return (
     <section
       className={styles.modalContainer}
       ref={outSideModal}
-      onClick={closeModal}
+      onClick={outsideClick}
     >
       <div className={styles.modal}>
         <div className={styles.modalTop}>

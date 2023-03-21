@@ -11,12 +11,9 @@ interface SetUserInfoProps {
 }
 
 interface GlobalContextProvider {
-  modalActive: boolean;
-  setModalActive: React.Dispatch<React.SetStateAction<boolean>>;
   userInfo: SetUserInfoProps | null;
   setUserInfo: React.Dispatch<React.SetStateAction<SetUserInfoProps | null>>;
 }
-1;
 
 interface GlobalContextProviderProps {
   children: React.ReactNode;
@@ -27,7 +24,6 @@ const GlobalContext = React.createContext({} as GlobalContextProvider);
 export const GlobalContextProvider = ({
   children
 }: GlobalContextProviderProps) => {
-  const [modalActive, setModalActive] = React.useState<boolean>(false);
   const [userInfo, setUserInfo] = React.useState<SetUserInfoProps | null>(null);
 
   let localId: string | null = '';
@@ -43,9 +39,7 @@ export const GlobalContextProvider = ({
   }, [localId]);
 
   return (
-    <GlobalContext.Provider
-      value={{ modalActive, setModalActive, userInfo, setUserInfo }}
-    >
+    <GlobalContext.Provider value={{ userInfo, setUserInfo }}>
       {children}
     </GlobalContext.Provider>
   );

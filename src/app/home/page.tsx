@@ -6,10 +6,10 @@ import styles from './page.module.css';
 
 import addIcon from '@/../public/assets/icons/add.svg';
 import AddModal from '@/components/subcomponents/AddModal/AddModal';
-import { useGlobalContext } from '@/contexts/GlobalContext';
+import { useModalContext } from '@/contexts/ModalContext';
 
 const Page = () => {
-  const { modalActive, setModalActive } = useGlobalContext();
+  const { modalActive, setModalActive } = useModalContext();
 
   const addButtonClick = () => {
     setModalActive(true);

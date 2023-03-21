@@ -1,6 +1,7 @@
 import '../../global-styles/globals.css';
 import Footer from '@/components/Footer/Footer';
 import Header from '@/components/Header/Header';
+import { ModalContextProvider } from '@/contexts/ModalContext';
 
 export const metadata = {
   title: 'Cerberus Project',
@@ -14,9 +15,11 @@ export default async function RootLayout({
 }) {
   return (
     <>
-      <Header />
-      <main className="main">{children}</main>
-      <Footer />
+      <ModalContextProvider>
+        <Header />
+        <main className="main">{children}</main>
+        <Footer />
+      </ModalContextProvider>
     </>
   );
 }

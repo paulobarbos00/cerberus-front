@@ -30,7 +30,6 @@ export default function LoginSession() {
     const outsideClick = (e: any) => {
       if (!menuRef.current?.contains(e.target)) {
         setIsActive(false);
-        console.log(e.target);
       }
     };
 

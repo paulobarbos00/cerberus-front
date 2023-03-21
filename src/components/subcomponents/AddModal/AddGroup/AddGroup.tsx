@@ -1,10 +1,21 @@
 import React from 'react';
 import useCreateLinkGroup from '@/hooks/useCreateLinkGroup';
 import styles from '../AddModal.module.css';
+import { useModalContext } from '@/contexts/ModalContext';
 
 export default function AddGroup() {
   const [inputName, setInputName] = React.useState('');
   const [inputDesc, setInputDesc] = React.useState('');
+
+  const { setInputHasText } = useModalContext();
+
+  React.useEffect(() => {
+    if (inputName || inputDesc) {
+      setInputHasText(true);
+    } else {
+      setInputHasText(false);
+    }
+  }, [inputName, inputDesc, setInputHasText]);
 
   const bodyRequest = {
     name: inputName,
