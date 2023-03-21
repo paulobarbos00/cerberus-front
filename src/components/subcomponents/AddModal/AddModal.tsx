@@ -22,7 +22,7 @@ export default function AddModal() {
     >
       <div className={styles.modal}>
         <div className={styles.modalTop}>
-          <h2 className={styles.modalTitle}>Adicionar Grupo</h2>
+          <h2 className={styles.modalTitle}>Adicionar</h2>
           <button
             type="button"
             className={styles.modalClose}
@@ -37,7 +37,10 @@ export default function AddModal() {
           </button>
         </div>
         <div className={styles.modalToggle}>
-          <button type="button" className={`${styles.modalToggleButton}`}>
+          <button
+            type="button"
+            className={`${styles.modalToggleButton} ${styles.modalToggleButtonActive}`}
+          >
             Grupo de Links
           </button>
           <button type="button" className={styles.modalToggleButton}>

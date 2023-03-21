@@ -1,11 +1,6 @@
+import React from 'react';
 import { useGlobalContext } from '@/contexts/GlobalContext';
 import API from '@/services/axiosConfig';
-import React from 'react';
-
-export interface ICreateLinkGroupProps {
-  name: string;
-  description: string;
-}
 
 export interface ICreateGroupResponseData {
   data: {
@@ -18,6 +13,12 @@ export interface ICreateGroupResponseData {
     shortURL: string;
     userId: string;
   };
+}
+
+export interface ICreateLinkGroupProps {
+  name: string;
+  description: string;
+  shortURL: string;
 }
 
 export default function useCreateLinkGroup(params: ICreateLinkGroupProps) {
@@ -51,6 +52,7 @@ export default function useCreateLinkGroup(params: ICreateLinkGroupProps) {
           setData(response.data);
         })
         .catch((err) => {
+          console.log(err);
           throw new Error(err);
         })
         .finally(() => {

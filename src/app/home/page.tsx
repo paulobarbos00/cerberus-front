@@ -5,7 +5,7 @@ import React from 'react';
 import styles from './page.module.css';
 
 import addIcon from '@/../public/assets/icons/add.svg';
-import AddModal from '@/components/AddModal/AddModal';
+import AddModal from '@/components/subcomponents/AddModal/AddModal';
 import { useGlobalContext } from '@/contexts/GlobalContext';
 
 const Page = () => {

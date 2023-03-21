@@ -3,8 +3,8 @@
 import React from 'react';
 import Link from 'next/link';
 
-import LoginSession from '@/components/LoginSession/LoginSession';
 import styles from './Header.module.css';
+import LoginSession from '../subcomponents/LoginSession/LoginSession';
 
 export default function Header() {
   return (

@@ -1,5 +1,5 @@
-import useCreateLinkGroup from '@/hooks/useCreateLinkGroup';
 import React from 'react';
+import useCreateLinkGroup from '@/hooks/useCreateLinkGroup';
 import styles from '../AddModal.module.css';
 
 export default function AddGroup() {
@@ -22,7 +22,7 @@ export default function AddGroup() {
   return (
     <form className={styles.modalContent} onSubmit={handleSubmitForm}>
       <label className={styles.modalLabel}>
-        <span className={styles.modalLabelText}>Nome do grupo</span>
+        <span className={styles.modalLabelText}>Nome do grupo *</span>
         <input
           type="text"
           placeholder="Ex: Programação"
@@ -43,7 +43,7 @@ export default function AddGroup() {
       </label>
 
       <button className={styles.addButton} type="submit" disabled={loading}>
-        {loading ? 'Carregando...' : 'Criar Grupo'}
+        {loading ? 'Carregando...' : 'Adicionar Grupo'}
       </button>
     </form>
   );

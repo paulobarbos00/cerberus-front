@@ -1,11 +1,16 @@
 'use client';
 
-// import React from 'react';
-import { GoogleAuthProvider, getAuth, signInWithPopup } from 'firebase/auth';
+import {
+  GoogleAuthProvider,
+  getAuth,
+  signInWithPopup,
+  Auth
+} from 'firebase/auth';
 import { FirebaseError } from 'firebase/app';
 import { app } from '@/services/firebaseConfig';
-import API from '@/services/axiosConfig';
 import { useGlobalContext } from '@/contexts/GlobalContext';
+import { useRouter } from 'next/navigation';
+import API from '@/services/axiosConfig';
 
 export interface ICreateGoogleUserProps {
   displayName: string | null;
@@ -17,8 +22,11 @@ export interface ICreateGoogleUserProps {
 const provider = new GoogleAuthProvider();
 const auth = getAuth(app);
 
+export declare function signOut(auth: Auth): Promise<void>;
+
 function useGetGoogleUser() {
   const { setUserInfo } = useGlobalContext();
+  const router = useRouter();
 
   const signInGoogle = () => {
     signInWithPopup(auth, provider)
@@ -50,6 +58,7 @@ function useGetGoogleUser() {
             }
 
             setUserInfo(storageUser);
+            router.push('/home');
           })
           .catch((error) => console.log(error));
       })
