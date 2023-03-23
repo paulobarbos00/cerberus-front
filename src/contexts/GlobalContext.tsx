@@ -13,10 +13,18 @@ interface SetUserInfoProps {
 interface GlobalContextProvider {
   userInfo: SetUserInfoProps | null;
   setUserInfo: React.Dispatch<React.SetStateAction<SetUserInfoProps | null>>;
+  alert: AlertProps | null;
+  setAlert: React.Dispatch<React.SetStateAction<AlertProps | null>>;
 }
 
 interface GlobalContextProviderProps {
   children: React.ReactNode;
+}
+
+interface AlertProps {
+  type: string;
+  title: string;
+  subtitle: string;
 }
 
 const GlobalContext = React.createContext({} as GlobalContextProvider);
@@ -25,6 +33,7 @@ export const GlobalContextProvider = ({
   children
 }: GlobalContextProviderProps) => {
   const [userInfo, setUserInfo] = React.useState<SetUserInfoProps | null>(null);
+  const [alert, setAlert] = React.useState<AlertProps | null>(null);
 
   let localId: string | null = '';
   if (typeof window !== 'undefined') {
@@ -38,8 +47,19 @@ export const GlobalContextProvider = ({
     }
   }, [localId]);
 
+  // Show alert when alert state is true
+  React.useEffect(() => {
+    if (alert) {
+      const timeInMiliseconds = 10000;
+
+      setTimeout(() => {
+        setAlert(null);
+      }, timeInMiliseconds);
+    }
+  }, [alert]);
+
   return (
-    <GlobalContext.Provider value={{ userInfo, setUserInfo }}>
+    <GlobalContext.Provider value={{ userInfo, setUserInfo, alert, setAlert }}>
       {children}
     </GlobalContext.Provider>
   );

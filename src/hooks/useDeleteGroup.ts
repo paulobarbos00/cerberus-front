@@ -1,3 +1,4 @@
+import { useModalContext } from '@/contexts/ModalContext';
 import React from 'react';
 import API from '@/services/axiosConfig';
 
@@ -5,6 +6,7 @@ export default function useDeleteGroup(id_group: string) {
   const [loading, setLoading] = React.useState<boolean>(false);
   const [error, setError] = React.useState<string | null>(null);
   const [response, setResponse] = React.useState(null);
+  const { setModalAlertActive } = useModalContext();
 
   let localStorageData: string | null = null;
 
@@ -29,6 +31,7 @@ export default function useDeleteGroup(id_group: string) {
         })
         .finally(() => {
           setLoading(false);
+          setModalAlertActive(false);
         });
     }
   };

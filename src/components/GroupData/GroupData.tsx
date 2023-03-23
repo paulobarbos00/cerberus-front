@@ -26,7 +26,6 @@ const GroupData: FC<pageProps> = ({ pageId }) => {
   };
 
   if (response) {
-    setModalAlertActive(false);
     router.push('/home');
   }
 

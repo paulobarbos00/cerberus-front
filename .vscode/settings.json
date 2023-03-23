@@ -23,7 +23,7 @@
     ".next": true,
     ".eslintrc.json": true,
     ".prettierrc.json": true,
-    "next.config.js": false,
+    "next.config.js": true,
     "next-env.d.ts": true,
     ".env.local": true
   },
