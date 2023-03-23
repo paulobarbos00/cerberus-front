@@ -1,5 +1,5 @@
 import React from 'react';
-import useCreateLinkGroup from '@/hooks/useCreateLinkGroup';
+import useCreateGroup from '@/hooks/useCreateGroup';
 import styles from '../AddModal.module.css';
 import { useModalContext } from '@/contexts/ModalContext';
 
@@ -23,7 +23,7 @@ export default function AddGroup() {
     shortURL: ''
   };
 
-  const { loading, addGroup } = useCreateLinkGroup(bodyRequest);
+  const { loading, addGroup } = useCreateGroup(bodyRequest);
 
   const handleSubmitForm = (event: React.FormEvent) => {
     event.preventDefault();

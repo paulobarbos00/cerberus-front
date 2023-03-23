@@ -1,0 +1,55 @@
+.groups {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-flow: row wrap;
+  gap: 1rem;
+}
+
+.groupCard {
+  background-color: var(--primary2);
+  padding: .5rem;
+  width: 18rem;
+  height: 5rem;
+  display: flex;
+  color: var(--secondary1);
+  text-decoration: none;
+  flex-direction: column;
+  border-radius: var(--borderRadius);
+  border: 2px solid var(--primary4);
+  box-shadow: 0 0 .5rem rgba(0, 0, 0, .5);
+  overflow: hidden;
+}
+
+.groupCard:hover {
+  background-color: var(--primary3);
+}
+
+.groupCard:active {
+  transform: scale(.98);
+  background-color: var(--primary2);
+}
+
+.topLine {
+  width: 100%;
+  height: .3rem;
+  border-radius: var(--borderRadius);
+  background-color: rgba(255,255,255, .4);
+  background-color: var(--yellow);
+}
+
+.groupCardTitle, .groupCardSubtitle {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.groupCardTitle {
+  margin-top: .3rem;
+  font-size: 1.2rem;
+  color: var(--secondary1);
+}
+
+.groupCardSubtitle {
+  font-size: .8rem;
+}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useGlobalContext } from '@/contexts/GlobalContext';
+import { useModalContext } from '@/contexts/ModalContext';
 import API from '@/services/axiosConfig';
 
 export interface ICreateGroupResponseData {
@@ -21,7 +21,7 @@ export interface ICreateLinkGroupProps {
   shortURL: string;
 }
 
-export default function useCreateLinkGroup(params: ICreateLinkGroupProps) {
+export default function useCreateGroup(params: ICreateLinkGroupProps) {
   const [loading, setLoading] = React.useState<boolean>(false);
   const [error, setError] = React.useState<string | null>(null);
   const [data, setData] = React.useState<ICreateGroupResponseData | null>(null);
@@ -32,7 +32,7 @@ export default function useCreateLinkGroup(params: ICreateLinkGroupProps) {
     localStorageData = localStorage.getItem('userLoggedId');
   }
 
-  const { setModalActive } = useGlobalContext();
+  const { setModalActive } = useModalContext();
 
   const addGroup = () => {
     if (!localStorageData) {

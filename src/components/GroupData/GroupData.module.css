@@ -1,0 +1,26 @@
+.groupContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.groupTopInfo {
+  display: flex;
+  justify-content: space-between;
+}
+
+.groupInfo {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.groupTitle {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.groupDescription {
+  font-size: 1.2rem;
+  font-weight: normal;
+}
