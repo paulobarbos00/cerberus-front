@@ -14,11 +14,14 @@
 
   /* Complementary Primary Colors */
   --red: #D91E18;
+  --red2: #f85149;
+  --red3: #331B1F;
   --green: #3CB371;
   --gree2: #18D93E;
   --blue: #186AD9;
   --blue2: #3A8CFF;
   --yellow: #D9A118;
+  --gray: #30363D;
 
   /* Secondary Colors */
   --secondary1: #D9D9D9;

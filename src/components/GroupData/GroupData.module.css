@@ -25,3 +25,30 @@
   font-size: 1.2rem;
   font-weight: normal;
 }
+
+.groupConfig {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+
+.groupConfigButton {
+  background-color: var(--primary2);
+  padding: .6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #fffbfb33;
+}
+
+.groupConfigButton:hover {
+  background-color: var(--primary3);
+}
+
+.groupConfigButtonRed:hover {
+  background-color: var(--red3);
+}
+
+.groupConfigButton:active {
+  transform: scale(.98);
+}

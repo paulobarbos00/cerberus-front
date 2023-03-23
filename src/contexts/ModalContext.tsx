@@ -7,6 +7,8 @@ interface ModalContextProvider {
   setInputHasText: React.Dispatch<React.SetStateAction<boolean>>;
   modalActive: boolean;
   setModalActive: React.Dispatch<React.SetStateAction<boolean>>;
+  modalAlertActive: boolean;
+  setModalAlertActive: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 interface ModalContextProviderProps {
@@ -20,10 +22,19 @@ export const ModalContextProvider = ({
 }: ModalContextProviderProps) => {
   const [inputHasText, setInputHasText] = React.useState<boolean>(false);
   const [modalActive, setModalActive] = React.useState<boolean>(false);
+  const [modalAlertActive, setModalAlertActive] =
+    React.useState<boolean>(false);
 
   return (
     <ModalContext.Provider
-      value={{ inputHasText, setInputHasText, modalActive, setModalActive }}
+      value={{
+        inputHasText,
+        setInputHasText,
+        modalActive,
+        setModalActive,
+        modalAlertActive,
+        setModalAlertActive
+      }}
     >
       {children}
     </ModalContext.Provider>
