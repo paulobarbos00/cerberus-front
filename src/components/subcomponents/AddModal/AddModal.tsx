@@ -69,7 +69,13 @@ export default function AddModal() {
 
         <AddGroup />
 
-        {modalAlertActive && <ModalAlert modalAlertConfirmClick={closeModal} />}
+        {modalAlertActive && (
+          <ModalAlert
+            modalAlertConfirmClick={closeModal}
+            title="Descartar alterações?"
+            subtitle="Você tem alterações não salvas, tem certeza que deseja cancelar a criação de grupo?"
+          />
+        )}
       </div>
     </section>
   );
