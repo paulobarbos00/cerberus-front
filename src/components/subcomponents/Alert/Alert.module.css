@@ -1,7 +1,7 @@
 .alert {
   background-color: var(--blue);
   width: 30rem;
-  position: absolute;
+  position: fixed;
   bottom: 2rem;
   margin-left: calc(50% - 15rem);
   z-index: 1000;
@@ -10,7 +10,8 @@
   justify-content: space-between;
   border-radius: var(--borderRadius);
   align-items: center;
-  border: 2px solid var(--blue2);
+  border: 3px solid var(--blue2);
+  animation: teste 8s ease-in-out forwards;
 }
 
 .alertInfo {
@@ -51,4 +52,19 @@
 .info {
   background-color: var(--primary2) !important;
   border-color: var(--primary3);
+}
+
+@keyframes teste {
+  0% {
+    bottom: -8rem;
+  }
+  10% {
+    bottom: 2rem;
+  }
+  90% {
+    bottom: 2rem;
+  }
+  100% {
+    bottom: -8rem;
+  }
 }
