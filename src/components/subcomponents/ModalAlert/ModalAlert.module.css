@@ -16,7 +16,7 @@
   width: 20rem;
   padding: 1rem;
   border-radius: var(--borderRadius);
-  box-shadow: 0 0 1rem rgba(0,0,0, .5);
+  box-shadow: 0 0 3rem #000;
   border: 1px solid var(--gray);
   display: flex;
   flex-direction: column;

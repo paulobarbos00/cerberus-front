@@ -5,16 +5,32 @@ import closeIcon from '@/../public/assets/icons/close.svg';
 import AddGroup from './AddGroup/AddGroup';
 import styles from './AddModal.module.css';
 import { useModalContext } from '@/contexts/ModalContext';
+import ModalAlert from '../ModalAlert/ModalAlert';
 
 export default function AddModal() {
   const { setModalActive, inputHasText } = useModalContext();
   const outSideModal = React.useRef(null);
+  const { modalAlertActive, setModalAlertActive } = useModalContext();
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const outsideClick = ({ target }: any) => {
     if (target === outSideModal.current && !inputHasText) {
-      setModalActive(false);
+      closeModal();
+    } else if (target === outSideModal.current && inputHasText) {
+      setModalAlertActive(true);
     }
+  };
+
+  const cancelButtonClick = () => {
+    if (inputHasText) {
+      setModalAlertActive(true);
+    } else {
+      closeModal();
+    }
+  };
+
+  const closeModal = () => {
+    setModalActive(false);
   };
 
   return (
@@ -29,7 +45,7 @@ export default function AddModal() {
           <button
             type="button"
             className={styles.modalClose}
-            onClick={() => setModalActive(false)}
+            onClick={cancelButtonClick}
           >
             <Image
               src={closeIcon}
@@ -52,6 +68,8 @@ export default function AddModal() {
         </div>
 
         <AddGroup />
+
+        {modalAlertActive && <ModalAlert modalAlertConfirmClick={closeModal} />}
       </div>
     </section>
   );

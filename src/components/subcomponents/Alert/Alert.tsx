@@ -26,7 +26,9 @@ export default function Alert() {
       <div className={`${styles.alert} ${type}`}>
         <div className={styles.alertInfo}>
           <h4 className={styles.title}>{alert.title || 'Título'}</h4>
-          <p className={styles.subtitle}>{alert.subtitle || 'Subtítulo'}</p>
+          {alert.subtitle && (
+            <p className={styles.subtitle}>{alert.subtitle}</p>
+          )}
         </div>
         <button className={styles.close} onClick={() => setAlert(null)}>
           <Image width={20} height={20} src={closeIcon} alt="Fechar" />

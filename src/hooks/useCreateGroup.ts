@@ -1,4 +1,5 @@
 import React from 'react';
+import { useGlobalContext } from '@/contexts/GlobalContext';
 import { useModalContext } from '@/contexts/ModalContext';
 import API from '@/services/axiosConfig';
 
@@ -25,6 +26,7 @@ export default function useCreateGroup(params: ICreateLinkGroupProps) {
   const [loading, setLoading] = React.useState<boolean>(false);
   const [error, setError] = React.useState<string | null>(null);
   const [data, setData] = React.useState<ICreateGroupResponseData | null>(null);
+  const { setAlert } = useGlobalContext();
 
   let localStorageData: string | null = null;
 
@@ -50,10 +52,19 @@ export default function useCreateGroup(params: ICreateLinkGroupProps) {
       API.post('/group', postBody)
         .then((response) => {
           setData(response.data);
+          setAlert({
+            type: 'success',
+            title: 'Grupo criado com sucesso!',
+            subtitle: 'Agora você pode adicionar links a ele.'
+          });
         })
-        .catch((err) => {
-          console.log(err);
-          throw new Error(err);
+        .catch(() => {
+          setAlert({
+            type: 'warning',
+            title: 'Erro ao criar grupo',
+            subtitle:
+              'Ops! Um erro inesperado aconteceu. Tente novamente mais tarde.'
+          });
         })
         .finally(() => {
           setLoading(false);

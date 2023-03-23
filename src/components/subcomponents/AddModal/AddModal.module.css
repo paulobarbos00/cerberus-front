@@ -7,15 +7,14 @@
   height: 100vh;
   z-index: 1000;
   display: flex;
-  place-content: center;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: center;
 }
 
 .modal {
   background-color: var(--primary1);
   width: 25rem;
   min-height: 10rem;
-  margin-top: 10rem;
   border-radius: var(--borderRadius);
   padding: 1.5rem;
   display: flex;
@@ -40,6 +39,11 @@
   border: none;
   cursor: pointer;
   padding: .5rem;
+  display: flex;
+}
+
+.modalClose:hover {
+  background-color: var(--gray);
 }
 
 .modalToggle {

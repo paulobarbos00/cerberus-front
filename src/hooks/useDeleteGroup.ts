@@ -1,3 +1,4 @@
+import { useGlobalContext } from '@/contexts/GlobalContext';
 import { useModalContext } from '@/contexts/ModalContext';
 import React from 'react';
 import API from '@/services/axiosConfig';
@@ -7,6 +8,7 @@ export default function useDeleteGroup(id_group: string) {
   const [error, setError] = React.useState<string | null>(null);
   const [response, setResponse] = React.useState(null);
   const { setModalAlertActive } = useModalContext();
+  const { setAlert } = useGlobalContext();
 
   let localStorageData: string | null = null;
 
@@ -24,10 +26,18 @@ export default function useDeleteGroup(id_group: string) {
       API.delete(`/group/${id_group}`)
         .then((response) => {
           setResponse(response.data);
+          setAlert({
+            type: 'success',
+            title: 'Grupo excluído com sucesso'
+          });
         })
-        .catch((err) => {
-          console.log(err);
-          throw new Error(err);
+        .catch(() => {
+          setAlert({
+            type: 'warning',
+            title: 'Ops! Algo deu errado.',
+            subtitle:
+              'O grupo rebelou-se e não quer ser excluído. Tente novamente.'
+          });
         })
         .finally(() => {
           setLoading(false);

@@ -9,7 +9,7 @@ interface modalProps {
   subtitle?: string;
   confirmText?: string;
   error?: string | null;
-  loading: boolean;
+  loading?: boolean;
 }
 
 export default function ModalAlert({
@@ -23,6 +23,7 @@ export default function ModalAlert({
 
   const confirmAction = () => {
     modalAlertConfirmClick();
+    setModalAlertActive(false);
   };
 
   const cancelAction = () => {

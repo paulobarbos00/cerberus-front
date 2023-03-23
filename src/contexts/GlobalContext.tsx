@@ -24,7 +24,7 @@ interface GlobalContextProviderProps {
 interface AlertProps {
   type: string;
   title: string;
-  subtitle: string;
+  subtitle?: string;
 }
 
 const GlobalContext = React.createContext({} as GlobalContextProvider);
