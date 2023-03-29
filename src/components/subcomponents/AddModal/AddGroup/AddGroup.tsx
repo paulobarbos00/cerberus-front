@@ -6,8 +6,8 @@ import { useModalContext } from '@/contexts/ModalContext';
 export default function AddGroup() {
   const [inputName, setInputName] = React.useState('');
   const [inputDesc, setInputDesc] = React.useState('');
-
-  const { setInputHasText } = useModalContext();
+  const inputNameRef = React.useRef<HTMLInputElement>(null);
+  const { setInputHasText, setModalAlertActive } = useModalContext();
 
   React.useEffect(() => {
     if (inputName || inputDesc) {
@@ -15,7 +15,20 @@ export default function AddGroup() {
     } else {
       setInputHasText(false);
     }
-  }, [inputName, inputDesc, setInputHasText]);
+
+    inputNameRef.current?.focus();
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && inputName) {
+        setModalAlertActive(true);
+      }
+    };
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [inputName, inputDesc, setInputHasText, setModalAlertActive]);
 
   const bodyRequest = {
     name: inputName,
@@ -35,6 +48,7 @@ export default function AddGroup() {
       <label className={styles.modalLabel}>
         <span className={styles.modalLabelText}>Nome do grupo *</span>
         <input
+          ref={inputNameRef}
           type="text"
           placeholder="Ex: Programação"
           className={styles.modalInput}
