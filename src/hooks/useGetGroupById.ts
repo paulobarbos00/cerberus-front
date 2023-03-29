@@ -20,18 +20,14 @@ export default function useGetGroupById(group_id: string) {
   const [loading, setLoading] = React.useState<boolean>(false);
   const [error, setError] = React.useState<string | null>(null);
 
-  let localStorageData: string | null = null;
-
-  if (typeof window !== 'undefined') {
-    localStorageData = localStorage.getItem('userLoggedId');
-  }
-
   function getGroup() {
     setLoading(true);
     setError(null);
 
     API.get(`/group/${group_id}`, {
-      headers: { user_id: localStorageData }
+      headers: {
+        user_id: localStorage.getItem('userLoggedId')
+      }
     })
       .then(({ data }) => {
         setGroupData(data);

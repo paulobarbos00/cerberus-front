@@ -49,7 +49,11 @@ export default function useCreateGroup(params: ICreateLinkGroupProps) {
       setLoading(true);
       setError(null);
 
-      API.post('/group', postBody)
+      API.post('/group', postBody, {
+        headers: {
+          user_id: localStorage.getItem('userLoggedId')
+        }
+      })
         .then((response) => {
           setData(response.data);
           setAlert({

@@ -23,7 +23,11 @@ export default function useDeleteGroup(id_group: string) {
       setLoading(true);
       setError(null);
 
-      API.delete(`/group/${id_group}`)
+      API.delete(`/group/${id_group}`, {
+        headers: {
+          user_id: localStorage.getItem('userLoggedId')
+        }
+      })
         .then((response) => {
           setResponse(response.data);
           setAlert({

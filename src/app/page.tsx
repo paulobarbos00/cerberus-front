@@ -3,8 +3,11 @@
 import React from 'react';
 
 import LoginButton from '@/components/subcomponents/LoginButton/LoginButton';
+import { useGlobalContext } from '@/contexts/GlobalContext';
+import LoginLoader from '@/components/subcomponents/LoginLoader/LoginLoader';
 
 function Home() {
+  const { isUserLogging } = useGlobalContext();
   return (
     <div>
       <h1>Hello, world!</h1>
@@ -17,7 +20,10 @@ function Home() {
         distinctio eaque vero, dolorum nobis recusandae ipsa? Libero ut, earum
         numquam saepe id dolor?
       </p>
+
       <LoginButton />
+
+      {isUserLogging && <LoginLoader />}
     </div>
   );
 }

@@ -15,6 +15,8 @@ interface GlobalContextProvider {
   setUserInfo: React.Dispatch<React.SetStateAction<SetUserInfoProps | null>>;
   alert: AlertProps | null;
   setAlert: React.Dispatch<React.SetStateAction<AlertProps | null>>;
+  isUserLogging: boolean;
+  setIsUserLogging: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 interface GlobalContextProviderProps {
@@ -34,6 +36,7 @@ export const GlobalContextProvider = ({
 }: GlobalContextProviderProps) => {
   const [userInfo, setUserInfo] = React.useState<SetUserInfoProps | null>(null);
   const [alert, setAlert] = React.useState<AlertProps | null>(null);
+  const [isUserLogging, setIsUserLogging] = React.useState<boolean>(false);
 
   let localId: string | null = '';
   if (typeof window !== 'undefined') {
@@ -59,7 +62,16 @@ export const GlobalContextProvider = ({
   }, [alert]);
 
   return (
-    <GlobalContext.Provider value={{ userInfo, setUserInfo, alert, setAlert }}>
+    <GlobalContext.Provider
+      value={{
+        userInfo,
+        setUserInfo,
+        alert,
+        setAlert,
+        isUserLogging,
+        setIsUserLogging
+      }}
+    >
       {children}
     </GlobalContext.Provider>
   );

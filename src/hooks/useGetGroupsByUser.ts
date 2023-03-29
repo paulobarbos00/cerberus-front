@@ -20,7 +20,9 @@ export default function useCreateGroup() {
       setError(null);
 
       API.get('/groups/user', {
-        headers: { user_id: localStorageData }
+        headers: {
+          user_id: localStorage.getItem('userLoggedId')
+        }
       })
         .then((response) => {
           setGroupsData(response.data);

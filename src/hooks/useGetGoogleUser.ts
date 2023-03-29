@@ -25,12 +25,13 @@ const auth = getAuth(app);
 export declare function signOut(auth: Auth): Promise<void>;
 
 function useGetGoogleUser() {
-  const { setUserInfo } = useGlobalContext();
+  const { setUserInfo, setIsUserLogging } = useGlobalContext();
   const router = useRouter();
 
   const signInGoogle = () => {
     signInWithPopup(auth, provider)
       .then(({ user }) => {
+        setIsUserLogging(true);
         const { displayName, email, photoURL, uid } = user;
 
         // Log in user to our database
@@ -54,13 +55,17 @@ function useGetGoogleUser() {
                   'userLoggedInfo',
                   JSON.stringify(storageUser)
                 );
+
               id && localStorage.setItem('userLoggedId', id);
             }
 
             setUserInfo(storageUser);
             router.push('/home');
           })
-          .catch((error) => console.log(error));
+          .catch((error) => console.log(error))
+          .finally(() => {
+            setIsUserLogging(false);
+          });
       })
       .catch((error: FirebaseError) => {
         GoogleAuthProvider.credentialFromError(error);
