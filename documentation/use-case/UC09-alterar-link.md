@@ -14,18 +14,18 @@ Fluxo principal:
 8.	Sistema altera o link e retorna a página de grupos de links  
 9.	caso de uso encerrado  
   
-Fluxo Alternativo:  
+Fluxo de Exceção:  
 A1 - Não foi inserido nenhum link  
-1.	A tela é exibida com uma mensagem informando que não há links inseridos  
+1.	A tela é exibida com uma mensagem informando que não há links inseridos no grupo  
 2.	caso de uso encerrado  
   
 A2 - O link selecionado é privado e o usuário não tem acesso  
-1.	Volta para página de grupos de links  
-2.	caso de uso encerrado  
+1.	Sistema informa que o usuário não tem acesso para alterar o link selecionado
+2.	Volta para página de grupos de links (passo 1)  
   
 A3 - URL do link vazio ou formato inválido
 1.	Sistema impede a submissão, informando que o endereço de URL é invalido  
-2.	caso de uso encerrado  
+2.	Sistema reexibe formulário de alteração do link (passo 6)
   
 —-------------------------------------------  
   
