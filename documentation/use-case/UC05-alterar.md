@@ -14,18 +14,18 @@ Fluxo principal:
 8.	Sistema altera o grupo de links e retorna a página de grupos inseridos  
 9.	caso de uso encerrado  
   
-Fluxo Alternativo:  
+Fluxo de Exceção:    
 A1 - Não foi inserido nenhum grupo de link  
 1.	A tela é exibida com uma mensagem informando que não há grupos de links inseridos  
 2.	caso de uso encerrado  
   
 A2 - O grupo selecionado é privado e o usuário não tem acesso  
-1.	Volta para página de grupos de links  
-2.	caso de uso encerrado  
+1.	Sistema informa que o usuário não tem acesso para alterar o grupo
+2.	Volta para página de grupos de links (passo 1)  
   
 A3 - Nome do grupo vazio  
 1.	Sistema impede a submissão, informando que o nome do grupo está vazio  
-2.	caso de uso encerrado  
+2.	Sistema exibe no formulário novamente (passo 7)  
   
 —-------------------------------------------  
   
