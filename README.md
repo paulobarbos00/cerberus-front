@@ -1,16 +1,16 @@
 # Cerberus - Front
 
-### O Projeto Cerberus consiste em um serviço de organização e catálogo de links para auxiliar o usuário a acessar seus conteúdos de forma prática.
+### The Cerberus Project consists of an organization service and catalog of links to help the user to access its content in a practical way.
 
 
-## Tecnologias:
+## Technologies:
 - React
 - NextJS v13
 - TypeScript
 - ESLint
 - Prettier
 
-## Equipe:
+## Team:
 - [Ytalo Gabriel](https://github.com/ytalogabriel)
 - [Hudson Gomes](https://github.com/gomeshud)
 - [João Victor](https://github.com/vikmiranda)
@@ -18,5 +18,5 @@
 - [Marcelo Souza](https://github.com/marcelostenorio)
 - [Paulo Barbosa](https://github.com/paulobarbos00)
 
-## Orientador:
+## Advisor:
 = [Fernando Kenji](https://github.com/fkenjikamei)
