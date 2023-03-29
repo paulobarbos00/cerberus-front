@@ -1,29 +1,28 @@
-CASO DE USO  
+USE CASE
   
-# UC01: Autenticação e/ou Cadastro no Sistema    
-Objetivo: Este caso de uso possibilita ao usuário se autenticar no sistema    
-Ator: Usuário geral    
-Pré-Condições: O usuário tem conta do Google.    
+# UC01: Authentication and/or Registration in the System
+Purpose: This use case allows the user to authenticate to the system
+Actor: General user
+Preconditions: User has Google account.
     
-Fluxo principal:    
-1.	Sistema exibe a página de login    
-2.	Usuário seleciona a opção para se autenticar pela conta do Google    
-3.	Sistema exibe janela para o usuário informar e-mail e senha da Google    
-4.	Usuário submete informações de acesso da Google.    
-5.	Sistema recebe informações da Google e autentica usuário [A1][B1]    
-6.	Sistema exige página inicial    
-7.	caso de uso encerrado    
+Main flow:
+1. System displays login page
+2. User selects the option to authenticate by Google account
+3. System displays window for user to enter Google email and password
+4. User submits Google login information.
+5. System receives information from Google and authenticates user [A1][B1]
+6. System requires homepage
+7. closed use case
     
-Fluxo de Exceção:    
-A1 - E-mail e/ou senha inválida    
-1.	Sistema recebe informações de acesso invalido e retorna a página de login    
-2.	caso de uso encerrado    
+Exception Flow:
+A1 - Invalid email and/or password
+1. System receives invalid access information and returns to login page
+2. closed use case
 
-Fluxo Alternativo:
-B1 - Primeiro acesso    
-1.	Sistema recebe informações de acesso e cria usuário para o sistema    
-2.	Sistema exige página inicial
-3.	caso de uso encerrado    
+Alternative Flow:
+B1 - First access
+1. System receives access information and creates user for the system
+2. System requires home page
+3. closed use case
     
-—-------------------------------------------  
-  
+---------------------------------------------
