@@ -1,25 +1,26 @@
 # cerberus
 
-## Histórias de Usuário
+## User Stories
 
-### Backlog do Produto
-As histórias de usuário do sistema que fazem parte do Backlog do produto são as seguintes:
+### Product Backlog
+The system user stories that are part of the Product Backlog are as follows:
 
-* Como usuário comum, eu gostaria de ter feedback sobre tudo o que acontecer na aplicação, para que eu esteja sempre informado das ações que ocorrerem no sistema.
-* Como usuário comum, quero criar uma conta para acessar a interface de usuários do sistema.
-* Como usuário comum, gostaria de buscar links por tags, para encontrar com facilidade conteúdos do meu interesse
-* Como usuário comum, gostaria de compartilhar meus grupos de links para outras pessoas, para disseminar vários links de forma organizada.
-* Como usuário comum, quero criar um grupo de link, para deixar arquivado em meu repositório próprio;
-* Como usuário comum, quero inserir um link em um grupo de link, para deixar arquivado em meu repositório;
-* Como usuário comum, quero alterar um grupo de link do meu repositório, para corrigir erros de nomeação e privacidade;
-* Como usuário comum, quero alterar um link do meu repositório, para corrigir erros de nomeação e privacidade;
-* Como usuário comum, quero deletar um grupo de link do meu repositório, para excluir grupos de links indesejados;
-* Como usuário comum, quero deletar um link do meu repositório, para excluir links indesejados;
-* Como usuário comum, quero mover todos os links de um grupo para um grupo de links, para organizar por temáticas desejadas;
-* Como usuário comum, quero mover um link do meu repositório para um grupo de links, para organizar por temáticas desejadas;
-* Como usuário comum, quero visualizar o conteúdo de grupos de link;
-* Como usuário autenticado, eu gostaria de sair do sistema após utilizar o serviço.
-* Como usuário comum, gostaria de visualizar um menu de atalhos na página inicial para auxiliar na utilização da aplicação.
+* As a regular user, I want to have feedback on everything that happens in the application, so that I am always informed of the actions that occur in the system.
+* As a regular user, I want to create an account to access the system's user interface.
+* As a regular user, I want to search for links by tags, to easily find content of interest to me
+* As a regular user, I want to share my groups of links with others, to disseminate various links in an organized way.
+* As a regular user, I want to create a link group, to leave it archived in my own repository;
+* As a regular user, I want to insert a link in a link group, to leave it archived in my repository;
+* As a regular user, I want to change a link group in my repository, to fix naming and privacy errors;
+* As a regular user, I want to change a link in my repository, to correct naming and privacy errors;
+* As a regular user, I want to delete a link group from my repository, to delete unwanted link groups;
+* As a regular user, I want to delete a link from my repository, to delete unwanted links;
+* As a regular user, I want to move all links from a group to a group of links, to organize them by desired themes;
+* As a regular user, I want to move a link from my repository to a group of links, to organize them by desired themes;
+* As a regular user, I want to view the contents of link groups;
+* As an authenticated user, I want to exit the system after using the service.
+* As a regular user, I want to see a shortcut menu on the home page to help with using the application.
+
 
 
 
