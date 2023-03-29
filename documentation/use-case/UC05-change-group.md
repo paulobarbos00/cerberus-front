@@ -1,4 +1,4 @@
-# UC05: ALTER a group of links
+# UC05: CHANGE a group of links
 Purpose: This use case allows the user to change data from the groups of links he has access to: name, description and tags
 Actor: General user
 Preconditions: Have completed #UC01 and have permission to change link group
