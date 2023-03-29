@@ -11,7 +11,7 @@ Fluxo principal:
 5.	Sistema cria o grupo de links e retorna a página principal  
 6.	caso de uso encerrado  
   
-Fluxo Alternativo:  
+Fluxo de Exceção:  
 A1 - Usuário já atingiu o limite máximo de grupos de links criado  
 1.	Sistema exibe uma mensagem informando que o usuário não pode criar mais grupos de links por já ter atingido o limite máximo.  
 2.	Sistema retorna a página principal  
@@ -19,7 +19,7 @@ A1 - Usuário já atingiu o limite máximo de grupos de links criado
   
 A2 - Nome do grupo vazio  
 1.	Sistema impede a submissão, informando que o nome do grupo está vazio  
-2.	caso de uso encerrado  
+2.	retorna passo passo 3  
   
 —-------------------------------------------  
   
