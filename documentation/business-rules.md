@@ -1,6 +1,5 @@
-# REGRAS DE NEGÓCIO  
+# BUSINESS RULES
   
-RN01 - Um usuário pode criar até 05 grupos de links.  
-RN02 - Um usuário pode adicionar até 50 links em grupos de links.  
-  
+RN01 - A user can create up to 05 groups of links.
+RN02 - A user can add up to 50 links in link groups.
   
