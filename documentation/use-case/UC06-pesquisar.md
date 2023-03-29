@@ -10,10 +10,10 @@ Fluxo principal:
 4.	Usuário navega em uma lista com vários grupos de links  
 5.	caso de uso encerrado  
   
-Fluxo Alternativo:  
+Fluxo de Exceção:  
 A1 - Nome do grupo vazio  
 1.	Sistema impede a submissão, informando que o nome do grupo está vazio  
-2.	caso de uso encerrado  
+2.	Volta para o passo 2
   
 —-------------------------------------------  
   
