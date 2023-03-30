@@ -13,6 +13,7 @@ import editIcon from '@/../public/assets/icons/edit.svg';
 import styles from './GroupData.module.css';
 import EditGroupModal from '../subcomponents/Modals/EditModal/EditGroupModal';
 import AddGroupLinkModal from '../subcomponents/Modals/AddGroupLinkModal/AddGroupLinkModal';
+import { useGroupContext } from '@/contexts/GroupContext';
 
 interface pageProps {
   pageId: string;
@@ -21,7 +22,9 @@ interface pageProps {
 const GroupData: FC<pageProps> = ({ pageId }) => {
   const router = useRouter();
 
-  const { getGroup, groupData, setGroupData } = useGetGroupById(pageId);
+  const { getGroup } = useGetGroupById(pageId);
+
+  const { groupInfoContext } = useGroupContext();
 
   const {
     modalAlertActive,
@@ -45,8 +48,8 @@ const GroupData: FC<pageProps> = ({ pageId }) => {
     getGroup();
   }, []);
 
-  if (groupData) {
-    const { data } = groupData;
+  if (groupInfoContext) {
+    const { data } = groupInfoContext;
 
     return (
       <section className={styles.groupContainer}>
@@ -107,9 +110,7 @@ const GroupData: FC<pageProps> = ({ pageId }) => {
           />
         )}
 
-        {modalEditGroupActive && (
-          <EditGroupModal groupId={pageId} setGroupData={setGroupData} />
-        )}
+        {modalEditGroupActive && <EditGroupModal groupId={pageId} />}
 
         {modalCreateGroupLinkActive && <AddGroupLinkModal groupId={pageId} />}
       </section>

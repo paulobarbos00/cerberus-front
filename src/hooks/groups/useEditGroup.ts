@@ -2,6 +2,7 @@ import { useModalContext } from '@/contexts/ModalContext';
 import { useGlobalContext } from '@/contexts/GlobalContext';
 import API from '@/services/axiosConfig';
 import React from 'react';
+import { useGroupContext } from '@/contexts/GroupContext';
 
 interface IEditGroupParams {
   groupId: string;
@@ -10,11 +11,12 @@ interface IEditGroupParams {
 }
 
 export const useEditGroup = () => {
-  const [editGroupData, setEditGroupData] = React.useState(null);
+  const [editGroupData] = React.useState(null);
   const [loading, setLoading] = React.useState(false);
 
   const { setAlert } = useGlobalContext();
   const { setModalEditGroupActive } = useModalContext();
+  const { setGroupInfoContext } = useGroupContext();
   const userId = localStorage.getItem('userLoggedId');
 
   const editGroup = ({ groupId, name, description }: IEditGroupParams) => {
@@ -28,7 +30,7 @@ export const useEditGroup = () => {
       }
     })
       .then((response) => {
-        setEditGroupData(response.data);
+        setGroupInfoContext(response.data);
 
         setAlert({
           type: 'success',

@@ -1,26 +1,12 @@
+import { useGroupContext } from './../../contexts/GroupContext';
 import API from '@/services/axiosConfig';
 import React from 'react';
 
-export interface IGroupData {
-  createdAt: number;
-  description: string;
-  id: string;
-  is_public: boolean;
-  is_valid: boolean;
-  name: string;
-  shortURL: string;
-  userId: string;
-}
-
-export interface IGetGroupByIdResponseData {
-  data: IGroupData;
-}
-
 export default function useGetGroupById(group_id: string) {
-  const [groupData, setGroupData] =
-    React.useState<IGetGroupByIdResponseData | null>(null);
   const [loading, setLoading] = React.useState<boolean>(false);
   const [error, setError] = React.useState<string | null>(null);
+
+  const { setGroupInfoContext } = useGroupContext();
 
   function getGroup() {
     setLoading(true);
@@ -32,8 +18,7 @@ export default function useGetGroupById(group_id: string) {
       }
     })
       .then(({ data }) => {
-        setGroupData(data);
-        console.log(data);
+        setGroupInfoContext(data);
       })
       .catch((err) => {
         console.log(err);
@@ -43,5 +28,5 @@ export default function useGetGroupById(group_id: string) {
       });
   }
 
-  return { getGroup, groupData, loading, error, setGroupData };
+  return { getGroup, loading, error };
 }

@@ -4,21 +4,19 @@ import styles from '@/components/subcomponents/Modals/Modal.module.css';
 import closeIcon from '@/../public/assets/icons/close.svg';
 import { useEditGroup } from '@/hooks/groups/useEditGroup';
 import { useModalContext } from '@/contexts/ModalContext';
-import { IGetGroupByIdResponseData } from '@/hooks/groups/useGetGroupById';
 
 interface IPageProps {
   groupId: string;
-  setGroupData: any;
 }
 
-export default function EditGroupModal({ groupId, setGroupData }: IPageProps) {
+export default function EditGroupModal({ groupId }: IPageProps) {
   const { setModalEditGroupActive } = useModalContext();
-  const { editGroup, editGroupData } = useEditGroup();
+  const { editGroup } = useEditGroup();
 
   const [inputName, setInputName] = React.useState<string>('');
   const [inputDesc, setInputDesc] = React.useState<string>('');
 
-  const handleEditClick = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleEditClick = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const groupUpdateInfo = {
@@ -28,15 +26,6 @@ export default function EditGroupModal({ groupId, setGroupData }: IPageProps) {
     };
 
     editGroup(groupUpdateInfo);
-
-    if (editGroupData) {
-      setGroupData((data: IGetGroupByIdResponseData) => {
-        const newData = { ...data };
-        newData.data.name = inputName;
-        newData.data.description = inputDesc;
-        return newData;
-      });
-    }
   };
 
   const handleOutsideClick = (event: React.MouseEvent<HTMLElement>) => {
