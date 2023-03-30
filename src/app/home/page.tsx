@@ -5,7 +5,7 @@ import React from 'react';
 import styles from './page.module.css';
 
 import addIcon from '@/../public/assets/icons/add.svg';
-import AddModal from '@/components/subcomponents/AddModal/AddModal';
+import AddModal from '@/components/subcomponents/Modals/AddModal/AddModal';
 import { useModalContext } from '@/contexts/ModalContext';
 import GroupsList from '@/components/GroupsList/GroupsList';
 

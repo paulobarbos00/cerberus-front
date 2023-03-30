@@ -1,17 +1,19 @@
 import API from '@/services/axiosConfig';
 import React from 'react';
 
+export interface IGroupData {
+  createdAt: number;
+  description: string;
+  id: string;
+  is_public: boolean;
+  is_valid: boolean;
+  name: string;
+  shortURL: string;
+  userId: string;
+}
+
 export interface IGetGroupByIdResponseData {
-  data: {
-    createdAt: number;
-    description: string;
-    id: string;
-    is_public: boolean;
-    is_valid: boolean;
-    name: string;
-    shortURL: string;
-    userId: string;
-  };
+  data: IGroupData;
 }
 
 export default function useGetGroupById(group_id: string) {
@@ -40,5 +42,5 @@ export default function useGetGroupById(group_id: string) {
       });
   }
 
-  return { getGroup, groupData, loading, error };
+  return { getGroup, groupData, loading, error, setGroupData };
 }
