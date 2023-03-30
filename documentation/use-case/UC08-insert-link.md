@@ -14,7 +14,7 @@ Main flow:
 8. closed use case
   
   
-Exception Flow:
+Exception Flow:  
 A1 - User has already reached the maximum limit links added in a group
 1. System displays a message stating that the user cannot add more links because the maximum limit has already been reached.
 2. System returns link group page (step 1)
