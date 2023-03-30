@@ -33,6 +33,7 @@ export default function useGetGroupById(group_id: string) {
     })
       .then(({ data }) => {
         setGroupData(data);
+        console.log(data);
       })
       .catch((err) => {
         console.log(err);

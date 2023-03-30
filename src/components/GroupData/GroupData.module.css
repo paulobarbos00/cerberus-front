@@ -39,6 +39,7 @@
   align-items: center;
   justify-content: center;
   border: 1px solid #fffbfb33;
+  color: var(--secondary1);
 }
 
 .groupConfigButton:hover {

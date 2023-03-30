@@ -2,7 +2,7 @@
 'use client';
 import React from 'react';
 
-import useGetGroupsByUser from '@/hooks/useGetGroupsByUser';
+import useGetGroupsByUser from '@/hooks/groups/useGetGroupsByUser';
 import Link from 'next/link';
 import styles from './GroupsList.module.css';
 

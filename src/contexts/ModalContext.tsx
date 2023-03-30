@@ -11,6 +11,8 @@ interface ModalContextProvider {
   setModalAlertActive: React.Dispatch<React.SetStateAction<boolean>>;
   modalEditGroupActive: boolean;
   setModalEditGroupActive: React.Dispatch<React.SetStateAction<boolean>>;
+  modalCreateGroupLinkActive: boolean;
+  setModalCreateGroupLinkActive: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 interface ModalContextProviderProps {
@@ -28,6 +30,8 @@ export const ModalContextProvider = ({
     React.useState<boolean>(false);
   const [modalEditGroupActive, setModalEditGroupActive] =
     React.useState<boolean>(false);
+  const [modalCreateGroupLinkActive, setModalCreateGroupLinkActive] =
+    React.useState<boolean>(false);
 
   return (
     <ModalContext.Provider
@@ -39,7 +43,9 @@ export const ModalContextProvider = ({
         modalAlertActive,
         setModalAlertActive,
         modalEditGroupActive,
-        setModalEditGroupActive
+        setModalEditGroupActive,
+        modalCreateGroupLinkActive,
+        setModalCreateGroupLinkActive
       }}
     >
       {children}

@@ -1,5 +1,5 @@
 import React from 'react';
-import useCreateGroup from '@/hooks/useCreateGroup';
+import useCreateGroup from '@/hooks/groups/useCreateGroup';
 import styles from '../AddModal.module.css';
 import { useModalContext } from '@/contexts/ModalContext';
 

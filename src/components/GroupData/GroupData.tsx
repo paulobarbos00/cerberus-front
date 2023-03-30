@@ -5,15 +5,14 @@ import React, { FC } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useModalContext } from '@/contexts/ModalContext';
-import useGetGroupById, {
-  IGetGroupByIdResponseData
-} from '@/hooks/useGetGroupById';
-import useDeleteGroup from '@/hooks/useDeleteGroup';
+import useGetGroupById from '@/hooks/groups/useGetGroupById';
+import useDeleteGroup from '@/hooks/groups/useDeleteGroup';
 import ModalAlert from '../subcomponents/Modals/ModalAlert/ModalAlert';
 import DeleteIconRed from '@/../public/assets/icons/delete-red.svg';
 import editIcon from '@/../public/assets/icons/edit.svg';
 import styles from './GroupData.module.css';
 import EditGroupModal from '../subcomponents/Modals/EditModal/EditGroupModal';
+import AddGroupLinkModal from '../subcomponents/Modals/AddGroupLinkModal/AddGroupLinkModal';
 
 interface pageProps {
   pageId: string;
@@ -28,7 +27,9 @@ const GroupData: FC<pageProps> = ({ pageId }) => {
     modalAlertActive,
     setModalAlertActive,
     modalEditGroupActive,
-    setModalEditGroupActive
+    setModalEditGroupActive,
+    modalCreateGroupLinkActive,
+    setModalCreateGroupLinkActive
   } = useModalContext();
   const { deleteGroup, loading, error, response } = useDeleteGroup(pageId);
 
@@ -56,6 +57,16 @@ const GroupData: FC<pageProps> = ({ pageId }) => {
           </div>
 
           <div className={styles.groupConfig}>
+            <button
+              className={styles.groupConfigButton}
+              title="Adicionar Link"
+              onClick={() => {
+                setModalCreateGroupLinkActive(true);
+              }}
+            >
+              Criar Link
+            </button>
+
             <button
               className={styles.groupConfigButton}
               title="Editar Grupo"
@@ -99,6 +110,8 @@ const GroupData: FC<pageProps> = ({ pageId }) => {
         {modalEditGroupActive && (
           <EditGroupModal groupId={pageId} setGroupData={setGroupData} />
         )}
+
+        {modalCreateGroupLinkActive && <AddGroupLinkModal groupId={pageId} />}
       </section>
     );
   }

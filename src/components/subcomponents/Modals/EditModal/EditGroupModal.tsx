@@ -1,10 +1,10 @@
 import React from 'react';
 import Image from 'next/image';
-import styles from './EditModal.module.css';
+import styles from '@/components/subcomponents/Modals/Modal.module.css';
 import closeIcon from '@/../public/assets/icons/close.svg';
 import { useEditGroup } from '@/hooks/groups/useEditGroup';
 import { useModalContext } from '@/contexts/ModalContext';
-import { IGetGroupByIdResponseData } from '@/hooks/useGetGroupById';
+import { IGetGroupByIdResponseData } from '@/hooks/groups/useGetGroupById';
 
 interface IPageProps {
   groupId: string;
