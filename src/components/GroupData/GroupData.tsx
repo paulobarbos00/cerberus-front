@@ -10,6 +10,7 @@ import useDeleteGroup from '@/hooks/groups/useDeleteGroup';
 import ModalAlert from '../subcomponents/Modals/ModalAlert/ModalAlert';
 import DeleteIconRed from '@/../public/assets/icons/delete-red.svg';
 import editIcon from '@/../public/assets/icons/edit.svg';
+import addIcon from '@/../public/assets/icons/add2.svg';
 import styles from './GroupData.module.css';
 import EditGroupModal from '../subcomponents/Modals/EditModal/EditGroupModal';
 import AddGroupLinkModal from '../subcomponents/Modals/AddGroupLinkModal/AddGroupLinkModal';
@@ -61,12 +62,13 @@ const GroupData: FC<pageProps> = ({ pageId }) => {
 
           <div className={styles.groupConfig}>
             <button
-              className={styles.groupConfigButton}
-              title="Adicionar Link"
+              className={`${styles.groupConfigButton} ${styles.createLinkButton}`}
+              title="Adicionar um Link neste grupo"
               onClick={() => {
                 setModalCreateGroupLinkActive(true);
               }}
             >
+              <Image src={addIcon} width={18} height={18} alt="Ícone de soma" />
               Criar Link
             </button>
 

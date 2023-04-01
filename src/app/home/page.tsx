@@ -4,7 +4,7 @@ import Image from 'next/image';
 import React from 'react';
 import styles from './page.module.css';
 
-import addIcon from '@/../public/assets/icons/add.svg';
+import addIcon from '@/../public/assets/icons/add2.svg';
 import { useModalContext } from '@/contexts/ModalContext';
 import GroupsList from '@/components/GroupsList/GroupsList';
 import AddGroupModal from '@/components/subcomponents/Modals/AddGroupModal/AddGroupModal';
@@ -28,8 +28,8 @@ const Page = () => {
         >
           <Image
             src={addIcon}
-            width={25}
-            height={25}
+            width={18}
+            height={18}
             alt="Ícone de operador matemático de soma"
           />
           Adicionar

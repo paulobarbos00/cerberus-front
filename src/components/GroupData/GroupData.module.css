@@ -34,12 +34,28 @@
 
 .groupConfigButton {
   background-color: var(--primary2);
-  padding: .6rem;
+  padding: .8rem;
   display: flex;
   align-items: center;
   justify-content: center;
   border: 1px solid #fffbfb33;
   color: var(--secondary1);
+}
+
+.createLinkButton {
+  background-color: var(--blue);
+  border-color: var(--blue2);
+  font-size: 1.1rem;
+  padding: .8rem 1.2rem;
+  color: var(--secondary2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+}
+
+.createLinkButton:hover {
+  background-color: var(--blue2) !important;
 }
 
 .groupConfigButton:hover {
