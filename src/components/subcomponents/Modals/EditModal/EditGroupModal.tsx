@@ -19,6 +19,7 @@ export default function EditGroupModal({ groupId }: IPageProps) {
   const [inputDesc, setInputDesc] = React.useState<string>('');
 
   const outSideModal = React.useRef<HTMLElement>(null);
+  const inputNameRef = React.useRef<HTMLInputElement>(null);
 
   const handleEditClick = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -41,6 +42,13 @@ export default function EditGroupModal({ groupId }: IPageProps) {
     outSideElement: outSideModal,
     closeModal
   });
+
+  React.useEffect(() => {
+    if (!inputName && !inputDesc) {
+      inputNameRef.current?.focus();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <section
@@ -65,6 +73,7 @@ export default function EditGroupModal({ groupId }: IPageProps) {
             <input
               onChange={({ target }) => setInputName(target.value)}
               className={styles.labelInput}
+              ref={inputNameRef}
               type="text"
               placeholder="Exemplo: Jogos"
               required

@@ -20,6 +20,7 @@ export default function AddGroupLinkModal({ groupId }: IPageProps) {
   const [inputName, setInputName] = React.useState<string>('');
 
   const outsideModal = React.useRef<HTMLElement>(null);
+  const inputUrlRef = React.useRef<HTMLInputElement>(null);
 
   const handleCreateLinkClick = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -45,6 +46,13 @@ export default function AddGroupLinkModal({ groupId }: IPageProps) {
     closeModal
   });
 
+  React.useEffect(() => {
+    if (!inputUrl && !inputName && !inputDescription) {
+      inputUrlRef.current?.focus();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <section
       className={styles.modalContainer}
@@ -68,6 +76,7 @@ export default function AddGroupLinkModal({ groupId }: IPageProps) {
             <input
               onChange={({ target }) => setInputUrl(target.value)}
               className={styles.labelInput}
+              ref={inputUrlRef}
               type="url"
               placeholder="Exemplo: https://www.google.com"
               required

@@ -1,11 +1,11 @@
 import React from 'react';
-import styles from '@/components/subcomponents/Modals/Modal.module.css';
 import Image from 'next/image';
-import closeIcon from '@/../public/assets/icons/close.svg';
 import { useSetModalAlert } from '@/hooks/useSetModalAlert';
 import { useModalContext } from '@/contexts/ModalContext';
-import ModalAlert from '../ModalAlert/ModalAlert';
 import useCreateGroup from '@/hooks/groups/useCreateGroup';
+import ModalAlert from '../ModalAlert/ModalAlert';
+import closeIcon from '@/../public/assets/icons/close.svg';
+import styles from '@/components/subcomponents/Modals/Modal.module.css';
 
 export default function AddGroup() {
   const { setModalCreateGroupActive, modalAlertActive } = useModalContext();
@@ -14,10 +14,10 @@ export default function AddGroup() {
   const [inputDesc, setInputDesc] = React.useState('');
 
   const outsideModal = React.useRef<HTMLElement>(null);
+  const inputNameRef = React.useRef<HTMLInputElement>(null);
 
   const handleAddGroupSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
     addGroup();
   };
 
@@ -25,19 +25,24 @@ export default function AddGroup() {
     setModalCreateGroupActive(false);
   };
 
-  const bodyRequest = {
+  const { loading, addGroup } = useCreateGroup({
     name: inputName,
     description: inputDesc,
     shortURL: ''
-  };
-
-  const { loading, addGroup } = useCreateGroup(bodyRequest);
+  });
 
   const { handleCloseButtonClick, outsideElementClick } = useSetModalAlert({
     modalInputsValues: [inputName, inputDesc],
     outSideElement: outsideModal,
     closeModal
   });
+
+  React.useEffect(() => {
+    if (!inputName && !inputDesc) {
+      inputNameRef.current?.focus();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <section
@@ -64,6 +69,7 @@ export default function AddGroup() {
               className={styles.labelInput}
               type="text"
               placeholder="Exemplo: Jogos"
+              ref={inputNameRef}
               required
             />
           </label>

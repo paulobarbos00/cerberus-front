@@ -11,8 +11,9 @@
   background-color: var(--primary2);
   padding: .5rem;
   flex: 1;
-  min-width: 15rem;
-  max-width: 18rem;
+  flex-basis: 30%;
+  min-width: 17.6rem;
+  max-width: 17.7rem;
   height: 5rem;
   display: flex;
   color: var(--secondary1);
