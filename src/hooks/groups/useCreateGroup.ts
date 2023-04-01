@@ -34,7 +34,7 @@ export default function useCreateGroup(params: ICreateLinkGroupProps) {
     localStorageData = localStorage.getItem('userLoggedId');
   }
 
-  const { setModalActive } = useModalContext();
+  const { setModalCreateGroupActive } = useModalContext();
 
   const addGroup = () => {
     if (!localStorageData) {
@@ -72,7 +72,7 @@ export default function useCreateGroup(params: ICreateLinkGroupProps) {
         })
         .finally(() => {
           setLoading(false);
-          setModalActive(false);
+          setModalCreateGroupActive(false);
         });
     }
   };

@@ -58,7 +58,7 @@ export default function AddGroupLinkModal({ groupId }: IPageProps) {
             className={styles.modalCloseButton}
             onClick={handleCloseButtonClick}
           >
-            <Image src={closeIcon} alt="Close" width={20} height={20} />
+            <Image src={closeIcon} alt="Close" width={18} height={18} />
           </button>
         </div>
 

@@ -1,56 +1,53 @@
 import React from 'react';
-import Image from 'next/image';
-import { useModalContext } from '@/contexts/ModalContext';
-import { useSetModalAlert } from '@/hooks/useSetModalAlert';
-import { useEditGroup } from '@/hooks/groups/useEditGroup';
-import ModalAlert from '../ModalAlert/ModalAlert';
-import closeIcon from '@/../public/assets/icons/close.svg';
 import styles from '@/components/subcomponents/Modals/Modal.module.css';
+import Image from 'next/image';
+import closeIcon from '@/../public/assets/icons/close.svg';
+import { useSetModalAlert } from '@/hooks/useSetModalAlert';
+import { useModalContext } from '@/contexts/ModalContext';
+import ModalAlert from '../ModalAlert/ModalAlert';
+import useCreateGroup from '@/hooks/groups/useCreateGroup';
 
-interface IPageProps {
-  groupId: string;
-}
+export default function AddGroup() {
+  const { setModalCreateGroupActive, modalAlertActive } = useModalContext();
 
-export default function EditGroupModal({ groupId }: IPageProps) {
-  const { setModalEditGroupActive, modalAlertActive } = useModalContext();
-  const { editGroup, loading } = useEditGroup();
+  const [inputName, setInputName] = React.useState('');
+  const [inputDesc, setInputDesc] = React.useState('');
 
-  const [inputName, setInputName] = React.useState<string>('');
-  const [inputDesc, setInputDesc] = React.useState<string>('');
+  const outsideModal = React.useRef<HTMLElement>(null);
 
-  const outSideModal = React.useRef<HTMLElement>(null);
-
-  const handleEditClick = async (event: React.FormEvent<HTMLFormElement>) => {
+  const handleAddGroupSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const groupUpdateInfo = {
-      groupId,
-      name: inputName,
-      description: inputDesc
-    };
-
-    editGroup(groupUpdateInfo);
+    addGroup();
   };
 
   const closeModal = () => {
-    setModalEditGroupActive(false);
+    setModalCreateGroupActive(false);
   };
+
+  const bodyRequest = {
+    name: inputName,
+    description: inputDesc,
+    shortURL: ''
+  };
+
+  const { loading, addGroup } = useCreateGroup(bodyRequest);
 
   const { handleCloseButtonClick, outsideElementClick } = useSetModalAlert({
     modalInputsValues: [inputName, inputDesc],
-    outSideElement: outSideModal,
+    outSideElement: outsideModal,
     closeModal
   });
 
   return (
     <section
       className={styles.modalContainer}
-      ref={outSideModal}
+      ref={outsideModal}
       onClick={outsideElementClick}
     >
       <div className={styles.modal}>
         <div className={styles.modalHeader}>
-          <h2 className={styles.modalTitle}>Editar Grupo</h2>
+          <h2 className={styles.modalTitle}>Adicionar Grupo</h2>
           <button
             className={styles.modalCloseButton}
             onClick={handleCloseButtonClick}
@@ -59,9 +56,9 @@ export default function EditGroupModal({ groupId }: IPageProps) {
           </button>
         </div>
 
-        <form className={styles.modalBody} onSubmit={handleEditClick}>
+        <form className={styles.modalBody} onSubmit={handleAddGroupSubmit}>
           <label className={styles.label}>
-            <span className={styles.labelText}>Alterar nome:</span>
+            <span className={styles.labelText}>Nome do grupo: *</span>
             <input
               onChange={({ target }) => setInputName(target.value)}
               className={styles.labelInput}
@@ -72,7 +69,7 @@ export default function EditGroupModal({ groupId }: IPageProps) {
           </label>
 
           <label className={styles.label}>
-            <span className={styles.labelText}>Alterar descrição:</span>
+            <span className={styles.labelText}>Descrição do grupo:</span>
             <input
               onChange={({ target }) => setInputDesc(target.value)}
               className={styles.labelInput}
@@ -86,7 +83,7 @@ export default function EditGroupModal({ groupId }: IPageProps) {
             disabled={loading}
             className={styles.submitButton}
           >
-            {loading ? 'Confirmando...' : 'Confirmar Mudanças'}
+            {loading ? 'Criando...' : 'Criar Grupo'}
           </button>
         </form>
       </div>

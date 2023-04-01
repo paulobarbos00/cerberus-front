@@ -1,5 +1,5 @@
 import { useModalContext } from '@/contexts/ModalContext';
-import { RefObject } from 'react';
+import React, { RefObject } from 'react';
 
 export interface IModalAlertProps {
   modalInputsValues: string[];
@@ -31,6 +31,22 @@ export const useSetModalAlert = (data: IModalAlertProps) => {
       closeModal();
     }
   };
+
+  // Close modal on Escape key press
+  React.useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && inputsHasValues) {
+        setModalAlertActive(true);
+      } else if (event.key === 'Escape' && !inputsHasValues) {
+        closeModal();
+      }
+    };
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [closeModal, inputsHasValues, setModalAlertActive]);
 
   return { handleCloseButtonClick, outsideElementClick };
 };

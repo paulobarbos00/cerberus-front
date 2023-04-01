@@ -5,15 +5,16 @@ import React from 'react';
 import styles from './page.module.css';
 
 import addIcon from '@/../public/assets/icons/add.svg';
-import AddModal from '@/components/subcomponents/Modals/AddModal/AddModal';
 import { useModalContext } from '@/contexts/ModalContext';
 import GroupsList from '@/components/GroupsList/GroupsList';
+import AddGroupModal from '@/components/subcomponents/Modals/AddGroupModal/AddGroupModal';
 
 const Page = () => {
-  const { modalActive, setModalActive } = useModalContext();
+  const { modalCreateGroupActive, setModalCreateGroupActive } =
+    useModalContext();
 
   const addButtonClick = () => {
-    setModalActive(true);
+    setModalCreateGroupActive(true);
   };
 
   return (
@@ -37,7 +38,7 @@ const Page = () => {
 
       <GroupsList />
 
-      {modalActive && <AddModal />}
+      {modalCreateGroupActive && <AddGroupModal />}
     </>
   );
 };
