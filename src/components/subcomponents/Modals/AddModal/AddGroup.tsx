@@ -1,6 +1,6 @@
 import React from 'react';
 import useCreateGroup from '@/hooks/groups/useCreateGroup';
-import styles from '../AddModal.module.css';
+import styles from './AddModal.module.css';
 import { useModalContext } from '@/contexts/ModalContext';
 
 export default function AddGroup() {

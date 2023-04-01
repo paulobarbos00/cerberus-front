@@ -1,20 +1,24 @@
 import React from 'react';
 import Image from 'next/image';
-import styles from '@/components/subcomponents/Modals/Modal.module.css';
-import closeIcon from '@/../public/assets/icons/close.svg';
-import { useEditGroup } from '@/hooks/groups/useEditGroup';
 import { useModalContext } from '@/contexts/ModalContext';
+import { useSetModalAlert } from '@/hooks/useSetModalAlert';
+import { useEditGroup } from '@/hooks/groups/useEditGroup';
+import ModalAlert from '../ModalAlert/ModalAlert';
+import closeIcon from '@/../public/assets/icons/close.svg';
+import styles from '@/components/subcomponents/Modals/Modal.module.css';
 
 interface IPageProps {
   groupId: string;
 }
 
 export default function EditGroupModal({ groupId }: IPageProps) {
-  const { setModalEditGroupActive } = useModalContext();
-  const { editGroup } = useEditGroup();
+  const { setModalEditGroupActive, modalAlertActive } = useModalContext();
+  const { editGroup, loading } = useEditGroup();
 
   const [inputName, setInputName] = React.useState<string>('');
   const [inputDesc, setInputDesc] = React.useState<string>('');
+
+  const outSideModal = React.useRef<HTMLElement>(null);
 
   const handleEditClick = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -28,20 +32,28 @@ export default function EditGroupModal({ groupId }: IPageProps) {
     editGroup(groupUpdateInfo);
   };
 
-  const handleOutsideClick = (event: React.MouseEvent<HTMLElement>) => {
-    if (event.target === event.currentTarget) {
-      setModalEditGroupActive(false);
-    }
+  const closeModal = () => {
+    setModalEditGroupActive(false);
   };
 
+  const { handleCloseButtonClick, outsideElementClick } = useSetModalAlert({
+    modalInputsValues: [inputName, inputDesc],
+    outSideElement: outSideModal,
+    closeModal
+  });
+
   return (
-    <section className={styles.modalContainer} onClick={handleOutsideClick}>
+    <section
+      className={styles.modalContainer}
+      ref={outSideModal}
+      onClick={outsideElementClick}
+    >
       <div className={styles.modal}>
         <div className={styles.modalHeader}>
           <h2 className={styles.modalTitle}>Editar Grupo</h2>
           <button
             className={styles.modalCloseButton}
-            onClick={() => setModalEditGroupActive(false)}
+            onClick={handleCloseButtonClick}
           >
             <Image src={closeIcon} alt="Close" width={20} height={20} />
           </button>
@@ -69,11 +81,19 @@ export default function EditGroupModal({ groupId }: IPageProps) {
             />
           </label>
 
-          <button type="submit" className={styles.submitButton}>
-            Confirmar Mudanças
+          <button
+            type="submit"
+            disabled={loading}
+            className={styles.submitButton}
+          >
+            {loading ? 'Confirmando...' : 'Confirmar Mudanças'}
           </button>
         </form>
       </div>
+
+      {modalAlertActive && (
+        <ModalAlert modalAlertConfirmClick={closeModal} type="change" />
+      )}
     </section>
   );
 }

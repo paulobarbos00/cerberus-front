@@ -19,7 +19,7 @@ const Page = () => {
   return (
     <>
       <section className={styles.homeTop}>
-        <h1 className={styles.homeTopTitle}>Grupos de Links</h1>
+        <h1 className={styles.homeTopTitle}>Meus Grupos</h1>
         <button
           type="button"
           className={styles.homeTopButton}
@@ -27,8 +27,8 @@ const Page = () => {
         >
           <Image
             src={addIcon}
-            width={20}
-            height={20}
+            width={25}
+            height={25}
             alt="Ícone de operador matemático de soma"
           />
           Adicionar

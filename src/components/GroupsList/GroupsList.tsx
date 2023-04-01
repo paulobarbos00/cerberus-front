@@ -44,10 +44,12 @@ export default function GroupsList() {
                 className={styles.groupCard}
               >
                 <div className={styles.topLine}></div>
-                <h3 className={styles.groupCardTitle}>{group.name}</h3>
-                <small className={styles.groupCardSubtitle}>
-                  {group.description}
-                </small>
+                <div className={styles.groupCardInfo}>
+                  <h3 className={styles.groupCardTitle}>{group.name}</h3>
+                  <small className={styles.groupCardSubtitle}>
+                    {group.description}
+                  </small>
+                </div>
               </Link>
             );
           })}

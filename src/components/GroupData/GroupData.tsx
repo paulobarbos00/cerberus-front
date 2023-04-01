@@ -107,6 +107,7 @@ const GroupData: FC<pageProps> = ({ pageId }) => {
             modalAlertConfirmClick={deleteGroupClick}
             loading={loading}
             error={error}
+            type="confirm"
           />
         )}
 

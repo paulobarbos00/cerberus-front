@@ -53,7 +53,7 @@ export const GlobalContextProvider = ({
   // Show alert when alert state is true
   React.useEffect(() => {
     if (alert) {
-      const timeInMiliseconds = 10000;
+      const timeInMiliseconds = 8000;
 
       setTimeout(() => {
         setAlert(null);

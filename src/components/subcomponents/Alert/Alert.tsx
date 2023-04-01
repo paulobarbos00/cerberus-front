@@ -31,7 +31,7 @@ export default function Alert() {
           )}
         </div>
         <button className={styles.close} onClick={() => setAlert(null)}>
-          <Image width={20} height={20} src={closeIcon} alt="Fechar" />
+          <Image width={18} height={18} src={closeIcon} alt="Fechar" />
         </button>
       </div>
     );

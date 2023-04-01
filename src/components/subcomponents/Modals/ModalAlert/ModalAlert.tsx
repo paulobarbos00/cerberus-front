@@ -5,21 +5,27 @@ import { useModalContext } from '@/contexts/ModalContext';
 
 interface modalProps {
   modalAlertConfirmClick: () => void;
-  title?: string;
-  subtitle?: string;
-  confirmText?: string;
+  type: 'confirm' | 'change';
   error?: string | null;
   loading?: boolean;
 }
 
 export default function ModalAlert({
   modalAlertConfirmClick,
-  title,
-  subtitle,
-  confirmText,
+  type,
   loading
 }: modalProps) {
   const { setModalAlertActive } = useModalContext();
+
+  const confirmTitle = type === 'confirm' && 'Você tem certeza disso?';
+  const confirmSubtitle =
+    type === 'confirm' &&
+    'Todos os dados serão perdidos e não poderão ser recuperados.';
+
+  const changeTitle = type === 'change' && 'Descartar alterações?';
+  const changeSubtitle =
+    type === 'change' &&
+    'Você tem alterações não salvas, tem certeza que deseja cancelar a criação de grupo?';
 
   const confirmAction = () => {
     modalAlertConfirmClick();
@@ -34,9 +40,7 @@ export default function ModalAlert({
     <section className={styles.modalContainer}>
       <div className={styles.modalCard}>
         <div className={styles.modalTop}>
-          <h3 className={styles.modalTitle}>
-            {title || 'Você tem certeza disso?'}
-          </h3>
+          <h3 className={styles.modalTitle}>{confirmTitle || changeTitle}</h3>
           <button className={styles.cancelButton} onClick={cancelAction}>
             <Image
               src={cancelIcon}
@@ -47,10 +51,7 @@ export default function ModalAlert({
           </button>
         </div>
 
-        <p className={styles.subtitle}>
-          {subtitle ||
-            'Todos os dados serão perdidos e não poderão ser recuperados.'}
-        </p>
+        <p className={styles.subtitle}>{confirmSubtitle || changeSubtitle}</p>
 
         <div className={styles.modalButtons}>
           <button className={styles.modalButton} onClick={cancelAction}>
@@ -60,7 +61,7 @@ export default function ModalAlert({
             className={`${styles.modalButton} ${styles.confirmButton}`}
             onClick={confirmAction}
           >
-            {loading ? 'Carregando...' : confirmText || 'Sim, tenho certeza'}
+            {loading ? 'Carregando...' : 'Sim, tenho certeza'}
           </button>
         </div>
       </div>

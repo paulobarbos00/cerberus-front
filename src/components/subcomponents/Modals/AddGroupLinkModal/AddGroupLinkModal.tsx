@@ -1,22 +1,25 @@
 import React from 'react';
-
+import Image from 'next/image';
+import { useModalContext } from '@/contexts/ModalContext';
+import { useCreateGroupLink } from '@/hooks/links/useCreateGroupLink';
+import { useSetModalAlert } from '@/hooks/useSetModalAlert';
+import ModalAlert from '../ModalAlert/ModalAlert';
 import closeIcon from '@/../public/assets/icons/close.svg';
 import styles from '@/components/subcomponents/Modals/Modal.module.css';
-import { useModalContext } from '@/contexts/ModalContext';
-import Image from 'next/image';
-import { useCreateGroupLink } from '@/hooks/links/useCreateGroupLink';
 
 interface IPageProps {
   groupId: string;
 }
 
 export default function AddGroupLinkModal({ groupId }: IPageProps) {
-  const { setModalCreateGroupLinkActive } = useModalContext();
+  const { setModalCreateGroupLinkActive, modalAlertActive } = useModalContext();
   const { createGroupLink, loading } = useCreateGroupLink();
 
   const [inputUrl, setInputUrl] = React.useState<string>('');
   const [inputDescription, setInputDescription] = React.useState<string>('');
   const [inputName, setInputName] = React.useState<string>('');
+
+  const outsideModal = React.useRef<HTMLElement>(null);
 
   const handleCreateLinkClick = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -32,20 +35,28 @@ export default function AddGroupLinkModal({ groupId }: IPageProps) {
     createGroupLink(body);
   };
 
-  const handleOutsideClick = (event: React.MouseEvent<HTMLElement>) => {
-    if (event.target === event.currentTarget) {
-      setModalCreateGroupLinkActive(false);
-    }
+  const closeModal = () => {
+    setModalCreateGroupLinkActive(false);
   };
 
+  const { handleCloseButtonClick, outsideElementClick } = useSetModalAlert({
+    modalInputsValues: [inputName, inputUrl, inputDescription],
+    outSideElement: outsideModal,
+    closeModal
+  });
+
   return (
-    <section className={styles.modalContainer} onClick={handleOutsideClick}>
+    <section
+      className={styles.modalContainer}
+      ref={outsideModal}
+      onClick={outsideElementClick}
+    >
       <div className={styles.modal}>
         <div className={styles.modalHeader}>
           <h2 className={styles.modalTitle}>Criar Link</h2>
           <button
             className={styles.modalCloseButton}
-            onClick={() => setModalCreateGroupLinkActive(false)}
+            onClick={handleCloseButtonClick}
           >
             <Image src={closeIcon} alt="Close" width={20} height={20} />
           </button>
@@ -86,13 +97,17 @@ export default function AddGroupLinkModal({ groupId }: IPageProps) {
 
           <button
             type="submit"
-            disabled={!!loading}
+            disabled={loading}
             className={styles.submitButton}
           >
             {loading ? 'Criando...' : 'Criar Link'}
           </button>
         </form>
       </div>
+
+      {modalAlertActive && (
+        <ModalAlert modalAlertConfirmClick={closeModal} type="change" />
+      )}
     </section>
   );
 }

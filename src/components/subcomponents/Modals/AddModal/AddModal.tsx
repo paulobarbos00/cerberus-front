@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 
 import closeIcon from '@/../public/assets/icons/close.svg';
-import AddGroup from './AddGroup/AddGroup';
+import AddGroup from './AddGroup';
 import styles from './AddModal.module.css';
 import { useModalContext } from '@/contexts/ModalContext';
 import ModalAlert from '../ModalAlert/ModalAlert';
@@ -55,6 +55,7 @@ export default function AddModal() {
             />
           </button>
         </div>
+
         <div className={styles.modalToggle}>
           <button
             type="button"
@@ -70,11 +71,7 @@ export default function AddModal() {
         <AddGroup />
 
         {modalAlertActive && (
-          <ModalAlert
-            modalAlertConfirmClick={closeModal}
-            title="Descartar alterações?"
-            subtitle="Você tem alterações não salvas, tem certeza que deseja cancelar a criação de grupo?"
-          />
+          <ModalAlert modalAlertConfirmClick={closeModal} type="change" />
         )}
       </div>
     </section>

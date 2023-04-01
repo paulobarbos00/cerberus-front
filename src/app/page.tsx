@@ -2,9 +2,9 @@
 
 import React from 'react';
 
-import LoginButton from '@/components/subcomponents/LoginButton/LoginButton';
+import LoginButton from '@/components/subcomponents/login/LoginButton/LoginButton';
 import { useGlobalContext } from '@/contexts/GlobalContext';
-import LoginLoader from '@/components/subcomponents/LoginLoader/LoginLoader';
+import LoginLoader from '@/components/subcomponents/login/LoginLoader/LoginLoader';
 
 function Home() {
   const { isUserLogging } = useGlobalContext();

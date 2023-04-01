@@ -2,6 +2,7 @@ import useLogout from '@/hooks/useLogout';
 import Image from 'next/image';
 import React from 'react';
 import styles from './LoginSession.module.css';
+import logoutIcon from '@/../public/assets/icons/logout.svg';
 
 export interface IUserStorageData {
   id: string;
@@ -69,7 +70,16 @@ export default function LoginSession() {
 
         {isActive && (
           <div className={styles.dropdown}>
-            <button className={styles.dropdownButton} onClick={accountLogout}>
+            <button
+              className={`${styles.dropdownButton} ${styles.red}`}
+              onClick={accountLogout}
+            >
+              <Image
+                src={logoutIcon}
+                width={20}
+                height={20}
+                alt="Ícone de sair"
+              />
               Sair da Conta
             </button>
           </div>

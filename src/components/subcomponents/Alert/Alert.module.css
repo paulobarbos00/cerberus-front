@@ -6,11 +6,13 @@
   margin-left: calc(50% - 15rem);
   z-index: 1000;
   display: flex;
-  padding: .8rem;
+  padding: .5rem;
+  padding-left: .8rem;
   justify-content: space-between;
   border-radius: var(--borderRadius);
   align-items: center;
-  border: 3px solid var(--blue2);
+  border: 1px solid var(--blue2);
+  box-shadow: 0 0 .5rem rgba(0,0,0, .3);
   animation: teste 8s ease-in-out forwards;
 }
 
@@ -36,7 +38,7 @@
 }
 
 .close:hover {
-  background-color: rgba(255,255,255, .3);
+  background-color: rgba(255,255,255, .15);
 }
 
 .warning {
@@ -66,5 +68,6 @@
   }
   100% {
     bottom: -8rem;
+    display: none;
   }
 }

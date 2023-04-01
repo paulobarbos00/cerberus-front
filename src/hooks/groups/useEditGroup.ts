@@ -11,7 +11,6 @@ interface IEditGroupParams {
 }
 
 export const useEditGroup = () => {
-  const [editGroupData] = React.useState(null);
   const [loading, setLoading] = React.useState(false);
 
   const { setAlert } = useGlobalContext();
@@ -51,5 +50,5 @@ export const useEditGroup = () => {
       });
   };
 
-  return { editGroup, loading, editGroupData };
+  return { editGroup, loading };
 };
