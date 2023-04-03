@@ -70,12 +70,16 @@ export default function useCreateGroup(params: ICreateLinkGroupProps) {
           setGroupsList((e) => {
             if (e) {
               const newData = {
-                data: [...e.data, newGroup].reverse()
+                // using reverse to show the new group at the top of the list
+                data: [...e.data.reverse(), newGroup].reverse()
+              };
+              return newData;
+            } else {
+              const newData = {
+                data: [newGroup]
               };
               return newData;
             }
-
-            return null;
           });
         })
         .catch(() => {

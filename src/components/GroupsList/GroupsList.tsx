@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 'use client';
 import React from 'react';
 
@@ -31,7 +30,9 @@ export default function GroupsList() {
   }, []);
 
   if (typeof window === 'undefined') return null;
+
   if (loading) return <p>Carregando...</p>;
+
   if (groupsList) {
     const { data }: IGetGroupsByUserJSON = groupsList;
 

@@ -28,10 +28,17 @@ export default function useCreateGroup() {
         }
       })
         .then(({ data }) => {
-          setGroupsList(data.reverse());
+          const response = data.data;
+
+          const dataFormatted = {
+            data: response.reverse()
+          };
+
+          setGroupsList(dataFormatted);
         })
         .catch((err) => {
           console.log(err);
+          setGroupsList(null);
         })
         .finally(() => {
           setLoading(false);
