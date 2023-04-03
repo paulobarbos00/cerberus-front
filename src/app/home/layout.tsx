@@ -1,8 +1,9 @@
-import '../../global-styles/globals.css';
-import Footer from '@/components/Footer/Footer';
-import Header from '@/components/Header/Header';
 import { ModalContextProvider } from '@/contexts/ModalContext';
+import { GroupContextProvider } from '@/contexts/GroupContext';
+import Header from '@/components/Header/Header';
+import Footer from '@/components/Footer/Footer';
 import Alert from '@/components/subcomponents/Alert/Alert';
+import '../../global-styles/globals.css';
 
 export default async function RootLayout({
   children
@@ -12,10 +13,12 @@ export default async function RootLayout({
   return (
     <>
       <ModalContextProvider>
-        <Header />
-        <main className="main">{children}</main>
-        <Alert />
-        <Footer />
+        <GroupContextProvider>
+          <Header />
+          <main className="main">{children}</main>
+          <Alert />
+          <Footer />
+        </GroupContextProvider>
       </ModalContextProvider>
     </>
   );

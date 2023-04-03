@@ -5,6 +5,7 @@ import React from 'react';
 import useGetGroupsByUser from '@/hooks/groups/useGetGroupsByUser';
 import Link from 'next/link';
 import styles from './GroupsList.module.css';
+import { useGroupContext } from '@/contexts/GroupContext';
 
 export interface IGetGroupsByUserJSON {
   data: IGetGroupsByUser[];
@@ -22,7 +23,8 @@ export interface IGetGroupsByUser {
 }
 
 export default function GroupsList() {
-  const { groupsData, getGroups, loading } = useGetGroupsByUser();
+  const { getGroups, loading } = useGetGroupsByUser();
+  const { groupsList } = useGroupContext();
 
   React.useEffect(() => {
     getGroups();
@@ -30,8 +32,8 @@ export default function GroupsList() {
 
   if (typeof window === 'undefined') return null;
   if (loading) return <p>Carregando...</p>;
-  if (groupsData) {
-    const { data }: IGetGroupsByUserJSON = groupsData;
+  if (groupsList) {
+    const { data }: IGetGroupsByUserJSON = groupsList;
 
     if (data.length) {
       return (

@@ -23,7 +23,7 @@ interface pageProps {
 const GroupData: FC<pageProps> = ({ pageId }) => {
   const router = useRouter();
 
-  const { getGroup } = useGetGroupById(pageId);
+  const { getGroup, loading: getGroupLoading } = useGetGroupById(pageId);
 
   const { groupInfoContext } = useGroupContext();
 
@@ -35,7 +35,12 @@ const GroupData: FC<pageProps> = ({ pageId }) => {
     modalCreateGroupLinkActive,
     setModalCreateGroupLinkActive
   } = useModalContext();
-  const { deleteGroup, loading, error, response } = useDeleteGroup(pageId);
+  const {
+    deleteGroup,
+    loading: deleteLoading,
+    error,
+    response
+  } = useDeleteGroup(pageId);
 
   const deleteGroupClick = () => {
     deleteGroup();
@@ -48,6 +53,8 @@ const GroupData: FC<pageProps> = ({ pageId }) => {
   React.useEffect(() => {
     getGroup();
   }, []);
+
+  if (getGroupLoading) return <p>Carregando...</p>;
 
   if (groupInfoContext) {
     const { data } = groupInfoContext;
@@ -107,7 +114,7 @@ const GroupData: FC<pageProps> = ({ pageId }) => {
         {modalAlertActive && (
           <ModalAlert
             modalAlertConfirmClick={deleteGroupClick}
-            loading={loading}
+            loading={deleteLoading}
             error={error}
             type="confirm"
           />

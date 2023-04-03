@@ -1,10 +1,12 @@
+import { useGroupContext } from '@/contexts/GroupContext';
 import API from '@/services/axiosConfig';
 import React from 'react';
 
 export default function useCreateGroup() {
   const [loading, setLoading] = React.useState<boolean>(false);
   const [error, setError] = React.useState<string | null>(null);
-  const [groupsData, setGroupsData] = React.useState(null);
+
+  const { setGroupsList, setGroupInfoContext } = useGroupContext();
 
   let localStorageData: string | null = null;
 
@@ -18,14 +20,15 @@ export default function useCreateGroup() {
     } else {
       setLoading(true);
       setError(null);
+      setGroupInfoContext(null);
 
       API.get('/groups/user', {
         headers: {
           user_id: localStorage.getItem('userLoggedId')
         }
       })
-        .then((response) => {
-          setGroupsData(response.data);
+        .then(({ data }) => {
+          setGroupsList(data.reverse());
         })
         .catch((err) => {
           console.log(err);
@@ -36,5 +39,5 @@ export default function useCreateGroup() {
     }
   };
 
-  return { loading, error, groupsData, getGroups };
+  return { loading, error, getGroups };
 }

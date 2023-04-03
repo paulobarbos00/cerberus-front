@@ -2,6 +2,7 @@ import React from 'react';
 import { useGlobalContext } from '@/contexts/GlobalContext';
 import { useModalContext } from '@/contexts/ModalContext';
 import API from '@/services/axiosConfig';
+import { useGroupContext } from '@/contexts/GroupContext';
 
 export interface ICreateGroupResponseData {
   data: {
@@ -25,7 +26,6 @@ export interface ICreateLinkGroupProps {
 export default function useCreateGroup(params: ICreateLinkGroupProps) {
   const [loading, setLoading] = React.useState<boolean>(false);
   const [error, setError] = React.useState<string | null>(null);
-  const [data, setData] = React.useState<ICreateGroupResponseData | null>(null);
   const { setAlert } = useGlobalContext();
 
   let localStorageData: string | null = null;
@@ -35,6 +35,7 @@ export default function useCreateGroup(params: ICreateLinkGroupProps) {
   }
 
   const { setModalCreateGroupActive } = useModalContext();
+  const { setGroupsList } = useGroupContext();
 
   const addGroup = () => {
     if (!localStorageData) {
@@ -55,11 +56,21 @@ export default function useCreateGroup(params: ICreateLinkGroupProps) {
         }
       })
         .then((response) => {
-          setData(response.data);
           setAlert({
             type: 'success',
             title: 'Grupo criado com sucesso!',
             subtitle: 'Agora você pode adicionar links a ele.'
+          });
+
+          const { data } = response.data;
+          const newGroup = {
+            ...data
+          };
+
+          setGroupsList((e) => {
+            return {
+              data: [...e?.data, newGroup].reverse()
+            };
           });
         })
         .catch(() => {
@@ -77,5 +88,5 @@ export default function useCreateGroup(params: ICreateLinkGroupProps) {
     }
   };
 
-  return { loading, error, data, addGroup };
+  return { loading, error, addGroup };
 }
