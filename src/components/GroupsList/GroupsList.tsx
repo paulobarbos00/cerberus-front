@@ -5,6 +5,7 @@ import useGetGroupsByUser from '@/hooks/groups/useGetGroupsByUser';
 import Link from 'next/link';
 import styles from './GroupsList.module.css';
 import { useGroupContext } from '@/contexts/GroupContext';
+import { useAutoAnimate } from '@formkit/auto-animate/react';
 
 export interface IGetGroupsByUserJSON {
   data: IGetGroupsByUser[];
@@ -24,6 +25,7 @@ export interface IGetGroupsByUser {
 export default function GroupsList() {
   const { getGroups, loading } = useGetGroupsByUser();
   const { groupsList } = useGroupContext();
+  const [parent] = useAutoAnimate();
 
   React.useEffect(() => {
     getGroups();
@@ -38,7 +40,7 @@ export default function GroupsList() {
 
     if (data.length) {
       return (
-        <section className={styles.groups}>
+        <section className={styles.groups} ref={parent}>
           {data.map((group: IGetGroupsByUser) => {
             return (
               <Link
