@@ -68,9 +68,14 @@ export default function useCreateGroup(params: ICreateLinkGroupProps) {
           };
 
           setGroupsList((e) => {
-            return {
-              data: [...e?.data, newGroup].reverse()
-            };
+            if (e) {
+              const newData = {
+                data: [...e.data, newGroup].reverse()
+              };
+              return newData;
+            }
+
+            return null;
           });
         })
         .catch(() => {
