@@ -34,7 +34,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "D:\\documents\\www\\cerberus-front\\.next/types/**/*.ts"
+    "D:\\documents\\www\\cerberus-front\\.next/types/**/*.ts",
+    "C:\\Users\\marce\\OneDrive\\Área de Trabalho\\proint\\cerberus-front\\.next/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"

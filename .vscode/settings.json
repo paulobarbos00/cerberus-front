@@ -22,7 +22,7 @@
     // Next
     ".next": true,
     ".eslintrc.json": true,
-    ".prettierrc.json": true,
+    ".prettierrc.json": false,
     "next.config.js": true,
     "next-env.d.ts": true,
     ".env.local": true

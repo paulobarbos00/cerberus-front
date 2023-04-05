@@ -1,0 +1,59 @@
+.groupInfo {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.groupTitle {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.groupDescription {
+  font-size: 1.2rem;
+  font-weight: normal;
+}
+
+.groupConfig {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+
+.groupConfigButton {
+  background-color: var(--primary2);
+  padding: .8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #fffbfb33;
+  color: var(--secondary1);
+}
+
+.createLinkButton {
+  background-color: var(--blue);
+  border-color: var(--blue2);
+  font-size: 1.1rem;
+  padding: .8rem 1.2rem;
+  color: var(--secondary2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+}
+
+.createLinkButton:hover {
+  background-color: var(--blue2) !important;
+}
+
+.groupConfigButton:hover {
+  background-color: var(--primary3);
+}
+
+.groupConfigButtonRed:hover {
+  background-color: var(--red3);
+}
+
+.groupConfigButton:active {
+  transform: scale(.98);
+}
