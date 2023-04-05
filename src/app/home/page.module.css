@@ -11,26 +11,3 @@
   color: var(--secondary2);
   font-weight: 500;
 }
-
-.homeTopButton {
-  background-color: var(--blue);
-  font-size: 1.2rem;
-  padding: .8rem 1.2rem;
-  border-radius: var(--borderRadius);
-  border: 1px solid var(--blue2);
-  box-shadow: 0 0 .5rem rgba(0,0,0, .3);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: .5rem;
-  color: #fff;
-}
-
-.homeTopButton:hover {
-  background-color: var(--blue2);
-}
-
-.homeTopButton:active {
-  transform: scale(.98);
-}
